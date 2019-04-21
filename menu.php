@@ -192,9 +192,6 @@
                 include("ROOT-OF-EQUATION\One-point-iteration-Method.php");
                 break;
             //MATRIX-ALGEBRA
-            case "LU-Decomposition-Method":
-                include("MATRIX-ALGEBRA\LU-Decomposition-Method.php");
-                break;
             case "Cramer-s-Rule":
                 include("MATRIX-ALGEBRA\Cramer-s-Rule.php");
             break;
@@ -206,6 +203,21 @@
                 break;
             case "Matrix-Inversion-Method":
                 include("MATRIX-ALGEBRA\Matrix-Inversion-Method.php");
+                break;
+            case "LU-Decomposition-Method":
+                include("MATRIX-ALGEBRA\LU-Decomposition-Method.php");
+                break;
+            case "Cholesky-Decomposition-Method":
+                include("MATRIX-ALGEBRA\Cholesky-Decomposition-Method.php");
+                break;
+            case "Jacobi-Iteration-Method":
+                include("MATRIX-ALGEBRA\Jacobi-Iteration-Method.php");
+                break;
+            case "Gauss-Seidel-Method":
+                include("MATRIX-ALGEBRA\Gauss-Seidel-Method.php");
+                break;
+            case "Conjugate-Gradient-Method":
+                include("MATRIX-ALGEBRA\Conjugate-Gradient-Method.php");
                 break;
             //INTERPOLATION EXTRAPOLATION
             //NUMERICAL INTEGRATION TECHNIQUES
@@ -228,7 +240,7 @@
                 include("NUMERICAL-INTEGRATION-TECHNIQUES\Romberg-Integration.php");
                 break;
             case "Gauss-Quadrature":
-                include("MATRIX-ALGEBRA\Gauss-Quadrature.php");
+                include("NUMERICAL-INTEGRATION-TECHNIQUES\Gauss-Quadrature.php");
                 break;
             //ORDINARY DIFFERENTIAL EQUATIONS
             case "Euler-s-method":

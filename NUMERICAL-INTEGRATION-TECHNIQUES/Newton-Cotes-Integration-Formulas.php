@@ -1,0 +1,1 @@
+NUMERICAL-INTEGRATION-TECHNIQUES\Newton-Cotes-Integration-Formulas.php
