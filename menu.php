@@ -111,13 +111,14 @@
                         <a href="index.php?page=Multistep-method">Multistep method</a>
                     </li>
                 </ul>
-                <a href="index.php?page=codeTest">Test</a>
+                <!-- <a href="index.php?page=codeTest">Test</a> -->
             </li>
         </ul>
 
         <ul class="list-unstyled CTAs">
             <li>
-                <a href="https://github.com/Garfiwld/Fumer" class="download">Download
+                <a href="https://github.com/Garfiwld/Fumer" target="_blank" class="download"><i
+                        class="fab fa-github"></i> Download
                     source</a>
             </li>
         </ul>
