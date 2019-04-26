@@ -1,1 +1,1 @@
-NUMERICAL-INTEGRATION-TECHNIQUES\Composite-Trapezoidal-Rule.php
+<h1>Composite Trapezoidal Rule</h1>

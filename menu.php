@@ -6,7 +6,7 @@
         </div>
 
         <ul class="list-unstyled components">
-            <li class="active">
+            <li>
                 <a href="#rootSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">ROOT OF
                     EQUATION</a>
                 <ul class="collapse list-unstyled" id="rootSubmenu">
@@ -26,7 +26,7 @@
                         <a href="index.php?page=Secant-Method">Secant Method</a>
                     </li>
                 </ul>
-            </li>
+                <!-- </li> -->
             <li>
                 <a href="#matirxSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">MATRIX
                     ALGEBRA</a>
@@ -61,21 +61,6 @@
                 </ul>
             </li>
             <li>
-                <a href="#interSubmenu" data-toggle="collapse" aria-expanded="false"
-                    class="dropdown-toggle">INTERPOLATION EXTRAPOLATION</a>
-                <ul class="collapse list-unstyled" id="interSubmenu">
-                    <li>
-                        <a href="index.php?page="></a>
-                    </li>
-                    <li>
-                        <a href="index.php?page="></a>
-                    </li>
-                    <li>
-                        <a href="index.php?page="></a>
-                    </li>
-                </ul>
-            </li>
-            <li>
                 <a href="#nuinterSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">NUMERICAL
                     INTEGRATION TECHNIQUES</a>
                 <ul class="collapse list-unstyled" id="nuinterSubmenu">
@@ -89,7 +74,7 @@
                         <a href="index.php?page=Simpson-s-Rule">Simpson's Rule</a>
                     </li>
                     <li>
-                        <a href="index.php?page=Composite-Simpsons-Rule">Composite Simpsons Rule</a>
+                        <a href="index.php?page=Composite-Simpsons-Rule">Composite Simpson's Rule</a>
                     </li>
                     <li>
                         <a href="index.php?page=Newton-Cotes-Integration-Formulas">Newton-Cotes Integration Formulas</a>
@@ -126,6 +111,7 @@
                         <a href="index.php?page=Multistep-method">Multistep method</a>
                     </li>
                 </ul>
+                <a href="index.php?page=codeTest">Test</a>
             </li>
         </ul>
 
@@ -260,6 +246,9 @@
                 break;
             case "Multistep-method":
                 include("ORDINARY-DIFFERENTIAL-EQUATIONS\Multistep-method.php");
+                break;
+            case "codeTest":
+                include("codeTest.php");
                 break;
             // case "":
             //     include("MATRIX-ALGEBRA\.php");

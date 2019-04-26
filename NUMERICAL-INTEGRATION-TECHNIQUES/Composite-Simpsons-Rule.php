@@ -1,1 +1,1 @@
-NUMERICAL-INTEGRATION-TECHNIQUES\Composite-Simpsons-Rule.php
+<h1>Composite Simpson's Rule</h1>

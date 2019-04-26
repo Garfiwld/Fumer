@@ -2,8 +2,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta http-equiv="X-Frame-Options" content="allow">
 
-<title>Simple Sidebar - Start Bootstrap Template</title>
+<title>Fumer</title>
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
