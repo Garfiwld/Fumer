@@ -21,14 +21,9 @@
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
     </script>
 
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('#sidebarCollapse').on('click', function() {
-            $('#sidebar').toggleClass('active');
-            $(this).toggleClass('active');
-        });
-    });
-    </script>
+    <script src="js/math.min.js"></script>
+    <script src="js/plotly-1.35.2.min.js"></script>
+
 </body>
 
 </html>

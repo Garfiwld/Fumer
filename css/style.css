@@ -235,3 +235,10 @@ a.article:hover {
     top: 205px;
     background: #fff;
 }
+
+#plot {
+    margin: 0 auto;
+    border: 1px solid black;
+    height: 85vh;
+    min-height: 300px;
+}

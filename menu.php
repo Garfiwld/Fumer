@@ -114,14 +114,14 @@
                 <!-- <a href="index.php?page=codeTest">Test</a> -->
             </li>
         </ul>
-
+        <!-- 
         <ul class="list-unstyled CTAs">
             <li>
                 <a href="https://github.com/Garfiwld/Fumer" target="_blank" class="download"><i
                         class="fab fa-github"></i> Download
                     source</a>
             </li>
-        </ul>
+        </ul> -->
     </nav>
 
     <!-- Page Content Holder -->
