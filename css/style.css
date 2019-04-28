@@ -238,7 +238,7 @@ a.article:hover {
 
 #plot {
     margin: 0 auto;
-    border: 1px solid black;
+    border: 1px solid #000;
     height: 85vh;
     min-height: 300px;
 }

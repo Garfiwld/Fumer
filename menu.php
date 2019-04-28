@@ -28,12 +28,12 @@
                 </ul>
                 <!-- </li> -->
             <li>
-                <a href="#matirxSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">MATRIX
+                <a href="#matirxSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">LINEAR
                     ALGEBRA</a>
                 <ul class="collapse list-unstyled" id="matirxSubmenu">
-                    <li>
+                    <!-- <li>
                         <a href="index.php?page=Cramer-s-Rule">Cramer's Rule</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="index.php?page=Gauss-Elimination-Method">Gauss Elimination Method</a>
                     </li>
@@ -162,49 +162,49 @@
         <?php 
             error_reporting(0);
             switch ($_GET["page"]) {
-            //ROOT-OF-EQUATION
+            //01-ROOT-OF-EQUATION
             case "Bisection-Method":
-                include("ROOT-OF-EQUATION\Bisection-Method.php");
+                include("01-ROOT-OF-EQUATION\Bisection-Method.php");
                 break;
             case "Newton-raphson-Method":
-                include("ROOT-OF-EQUATION\Newton-raphson-Method.php");
+                include("01-ROOT-OF-EQUATION\Newton-raphson-Method.php");
                 break;
             case "Secant-Method":
-                include("ROOT-OF-EQUATION\Secant-Method.php");
+                include("01-ROOT-OF-EQUATION\Secant-Method.php");
                 break;
             case "False-position-Method":
-                include("ROOT-OF-EQUATION\False-position-Method.php");
+                include("01-ROOT-OF-EQUATION\False-position-Method.php");
                 break;
             case "One-point-iteration-Method":
-                include("ROOT-OF-EQUATION\One-point-iteration-Method.php");
+                include("01-ROOT-OF-EQUATION\One-point-iteration-Method.php");
                 break;
-            //MATRIX-ALGEBRA
-            case "Cramer-s-Rule":
-                include("MATRIX-ALGEBRA\Cramer-s-Rule.php");
-            break;
+            //02-LINEAR-ALGEBRA
+            // case "Cramer-s-Rule":
+            //     include("02-LINEAR-ALGEBRA\Cramer-s-Rule.php");
+            //     break;
             case "Gauss-Elimination-Method":
-                include("MATRIX-ALGEBRA\Gauss-Elimination-Method.php");
+                include("02-LINEAR-ALGEBRA\Gauss-Elimination-Method.php");
                 break;
             case "Gauss-Jordan-Method":
-                include("MATRIX-ALGEBRA\Gauss-Jordan-Method.php");
+                include("02-LINEAR-ALGEBRA\Gauss-Jordan-Method.php");
                 break;
             case "Matrix-Inversion-Method":
-                include("MATRIX-ALGEBRA\Matrix-Inversion-Method.php");
+                include("02-LINEAR-ALGEBRA\Matrix-Inversion-Method.php");
                 break;
             case "LU-Decomposition-Method":
-                include("MATRIX-ALGEBRA\LU-Decomposition-Method.php");
+                include("02-LINEAR-ALGEBRA\LU-Decomposition-Method.php");
                 break;
             case "Cholesky-Decomposition-Method":
-                include("MATRIX-ALGEBRA\Cholesky-Decomposition-Method.php");
+                include("02-LINEAR-ALGEBRA\Cholesky-Decomposition-Method.php");
                 break;
             case "Jacobi-Iteration-Method":
-                include("MATRIX-ALGEBRA\Jacobi-Iteration-Method.php");
+                include("02-LINEAR-ALGEBRA\Jacobi-Iteration-Method.php");
                 break;
             case "Gauss-Seidel-Method":
-                include("MATRIX-ALGEBRA\Gauss-Seidel-Method.php");
+                include("02-LINEAR-ALGEBRA\Gauss-Seidel-Method.php");
                 break;
             case "Conjugate-Gradient-Method":
-                include("MATRIX-ALGEBRA\Conjugate-Gradient-Method.php");
+                include("02-LINEAR-ALGEBRA\Conjugate-Gradient-Method.php");
                 break;
             //INTERPOLATION EXTRAPOLATION
             //NUMERICAL INTEGRATION TECHNIQUES
@@ -252,11 +252,11 @@
                 include("codeTest.php");
                 break;
             // case "":
-            //     include("MATRIX-ALGEBRA\.php");
+            //     include("02-LINEAR-ALGEBRA\.php");
             //     break;
 
             default:
-                include("ROOT-OF-EQUATION\Bisection-Method.php");
+                include("01-ROOT-OF-EQUATION\Bisection-Method.php");
             }
         ?>
 
