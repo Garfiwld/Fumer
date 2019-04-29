@@ -26,7 +26,7 @@
                         <a href="index.php?page=Secant-Method">Secant Method</a>
                     </li>
                 </ul>
-                <!-- </li> -->
+            </li>
             <li>
                 <a href="#matirxSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">LINEAR
                     ALGEBRA</a>
@@ -57,6 +57,21 @@
                     </li>
                     <li>
                         <a href="index.php?page=Conjugate-Gradient-Method">Conjugate Gradient Method</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#interSubmenu" data-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle">Interpolation and Extrapolation</a>
+                <ul class="collapse list-unstyled" id="interSubmenu">
+                    <li>
+                        <a href="index.php?page=Newton-Interpolation">Newton Interpolation</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=Lagrange-Interpolation">Lagrange Interpolation</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=Spline-Interpolation">Spline Interpolation</a>
                     </li>
                 </ul>
             </li>
@@ -114,14 +129,14 @@
                 <!-- <a href="index.php?page=codeTest">Test</a> -->
             </li>
         </ul>
-        <!-- 
+
         <ul class="list-unstyled CTAs">
             <li>
                 <a href="https://github.com/Garfiwld/Fumer" target="_blank" class="download"><i
                         class="fab fa-github"></i> Download
                     source</a>
             </li>
-        </ul> -->
+        </ul>
     </nav>
 
     <!-- Page Content Holder -->
@@ -206,7 +221,16 @@
             case "Conjugate-Gradient-Method":
                 include("02-LINEAR-ALGEBRA\Conjugate-Gradient-Method.php");
                 break;
-            //INTERPOLATION EXTRAPOLATION
+            //03-INTERPOLATION-AND-EXTRAPOLATION
+            case "Newton-Interpolation":
+                include("03-INTERPOLATION-AND-EXTRAPOLATION\Newton-Interpolation.php");
+                break;
+            case "Lagrange-Interpolation":
+                include("03-INTERPOLATION-AND-EXTRAPOLATION\Lagrange-Interpolation.php");
+                break;
+            case "Spline-Interpolation":
+                include("03-INTERPOLATION-AND-EXTRAPOLATION\Spline-Interpolation.php");
+                break;
             //NUMERICAL INTEGRATION TECHNIQUES
             case "Trapezoidal-Rule":
                 include("NUMERICAL-INTEGRATION-TECHNIQUES\Trapezoidal-Rule.php");
@@ -252,7 +276,7 @@
                 include("codeTest.php");
                 break;
             // case "":
-            //     include("02-LINEAR-ALGEBRA\.php");
+            //     include("XXX\.php");
             //     break;
 
             default:

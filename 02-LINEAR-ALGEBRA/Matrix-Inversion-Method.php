@@ -1,6 +1,6 @@
 <h1>Matrix Inversion Method</h1>
 
-<body onload="CreateTable(text1.value);">
+<body onload="draw(); CreateTable(text1.value);">
     <div class="content">
         <div class="container-fluid">
 
