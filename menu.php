@@ -274,7 +274,7 @@
                 include("04-LEAST-SQUARES-REGRESSION\Regression.php");
                 break;
             case "Multiple-Regression":
-                include("04-LEAST-SQUARES-REGRESSION\Multiple Regression.php");
+                include("04-LEAST-SQUARES-REGRESSION\Multiple-Regression.php");
                 break;
             
             //05-NUMERICAL-INTEGRATION-TECHNIQUES
