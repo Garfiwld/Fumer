@@ -1,18 +1,18 @@
 <h1>Matrix Inversion Method</h1>
 
-<body onload="draw(); CreateTable(text1.value);">
+<body onload="CreateTable(inputN.value)">
     <div class="content">
         <div class="container-fluid">
 
             <div class="card">
                 <div class="card-body">
                     <h5>input 'n' Create table input</h5>
-                    <input type="text" class="form-control" id="text1" placeholder="3" name="text" placeholder="x^3-x-2"
-                        value="3" required>
+                    <input type="text" class="form-control" id="inputN" placeholder="3" name="text"
+                        placeholder="x^3-x-2" value="3" required>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(text1.value)">ENTER</button>
+                        onclick="CreateTable(inputN.value)">ENTER</button>
                 </div>
             </div>
             <br>
@@ -61,7 +61,7 @@
 
 <script>
 const getdata = () => {
-    n = document.getElementById("text1").value;
+    n = document.getElementById("inputN").value;
     var arr = [];
     for (i = 0; i < n; i++) {
         arr.push([]);

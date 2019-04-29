@@ -65,7 +65,6 @@ const getdata = () => {
             arr[i].push(document.getElementById(i + "|" + j).value);
         }
     }
-
     var x = [];
     var y = [];
     for (i = 0; i < n; i++) {
@@ -77,9 +76,7 @@ const getdata = () => {
     for (i = 0; i < n; i++) {
         y.push(arr[i][m]);
     }
-    //call
     Multiple_Regression(x, y);
-
 }
 
 const Multiple_Regression = (x, y) => {
@@ -89,7 +86,7 @@ const Multiple_Regression = (x, y) => {
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
-    //สร้าง array โง่ๆ ที่เป็น 000 ทั้งหมด
+    //สร้าง array
     var temp = [];
     var temp2 = [];
     for (i = 0; i < n; i++) {
@@ -106,8 +103,6 @@ const Multiple_Regression = (x, y) => {
     for (i = 1; i < n; i++) {
         for (j = i; j < n; j++) {
             for (k = 0; k < m; k++) {
-                //console.log("do");
-                //console.log(x[k][i-1]);
                 temp[i][j] = temp[i][j] + (x[k][i - 1] * x[k][j - 1]);
                 temp[j][i] = temp[i][j];
             }
@@ -131,12 +126,7 @@ const Multiple_Regression = (x, y) => {
     //เติมที่ขาด
     temp2[0] = math.sum(y);
 
-    console.log(temp);
-    console.log(temp2);
-
     var result = math.lusolve(temp, temp2);
-
-    console.log(result);
 
     var row;
     var cell;
@@ -152,16 +142,6 @@ const Multiple_Regression = (x, y) => {
 
 }
 
-
-
-// แก้สมาการ X
-const funcal = (X, expression) => {
-    expr = math.compile(expression);
-    let scope = {
-        x: parseFloat(X)
-    };
-    return expr.eval(scope);
-}
 
 //ลบ table
 const cleantable = () => {
@@ -223,23 +203,6 @@ const cleantableinput = () => {
 //การวาดที่จะไปใส่ใน plot
 const draw = (x, y) => {
     try {
-        // compile the expression once
-        //const expression = document.getElementById('text1').value
-        //const expr = math.compile(expression)
-
-        // evaluate the expression repeatedly for different values of x
-        //const xValues = math.range(-10, 10, 0.5).toArray()
-        //const yValues = xValues.map(function (x) {
-        //	return expr.eval({x: x})
-        //})
-
-        // render the plot using plotly
-        /*const trace1 = {
-        	x: xValues,
-        	y: yValues,
-        	type: 'scatter'
-        }*/
-
         const data = [{
             x: x,
             y: y
@@ -249,9 +212,6 @@ const draw = (x, y) => {
                 t: 0
             }
         });
-
-        //const data = [trace1]
-        //Plotly.newPlot('plot', data)
     } catch (err) {
         console.error(err)
         alert(err)

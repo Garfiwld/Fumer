@@ -196,14 +196,12 @@ const cleantable = () => {
 
 const CreateTable = (n) => {
     var table = document.getElementById("InputTable");
-    console.log(document.getElementById("InputTable").getElementsByTagName("tr").length)
     if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
         cleantableinput();
     }
 
     var row = table.insertRow(0);
 
-    console.log(n);
     for (i = 0; i <= parseInt(n) + 2; i++) {
         if (i == 0) {
             var cell = row.insertCell(i);

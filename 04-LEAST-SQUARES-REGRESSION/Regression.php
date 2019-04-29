@@ -230,7 +230,7 @@ const CreateTable = (n) => {
     cell.innerHTML = "&nbsp";
 
     row = table.insertRow(0);
-    console.log(n);
+
     for (i = 0; i <= 2; i++) {
         if (i == 0) {
             var cell = row.insertCell(i);
@@ -271,26 +271,8 @@ const cleantableinput = () => {
     table.innerHTML = "";
 }
 
-//การวาดที่จะไปใส่ใน plot
 const draw = (x, y) => {
     try {
-        // compile the expression once
-        //const expression = document.getElementById('text1').value
-        //const expr = math.compile(expression)
-
-        // evaluate the expression repeatedly for different values of x
-        //const xValues = math.range(-10, 10, 0.5).toArray()
-        //const yValues = xValues.map(function (x) {
-        //	return expr.eval({x: x})
-        //})
-
-        // render the plot using plotly
-        /*const trace1 = {
-        	x: xValues,
-        	y: yValues,
-        	type: 'scatter'
-        }*/
-
         const data = [{
             x: x,
             y: y
@@ -300,9 +282,6 @@ const draw = (x, y) => {
                 t: 0
             }
         });
-
-        //const data = [trace1]
-        //Plotly.newPlot('plot', data)
     } catch (err) {
         console.error(err)
         alert(err)

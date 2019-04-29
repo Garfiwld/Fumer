@@ -63,7 +63,6 @@
 // สร้างตาราง
 const CreateTable = (n) => {
     var table = document.getElementById("InputTable");
-    console.log(document.getElementById("InputTable").getElementsByTagName("tr").length)
     if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
         cleantableinput();
     }

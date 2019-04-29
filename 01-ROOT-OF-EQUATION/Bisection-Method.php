@@ -83,7 +83,6 @@ const bisection = () => {
     var x_old = xr;
     var xm = 0;
     var n = 0;
-    // แปลงค่าตัวแปรเป็นตัวแปร Number ด้วยฟังก์ชัน parseInt() และ parseFloat()
     var check = 0.0;
     if (document.getElementById("outputTable").getElementsByTagName("tr").length > 0) {
         cleantable();
@@ -91,7 +90,7 @@ const bisection = () => {
     do {
 
         if (xl != xr) {
-            xm = findxm(xl, xr);
+            xm = findXM(xl, xr);
             check = Math.abs(xm - x_old).toFixed(8);
         } else {
             check = 0;
@@ -146,12 +145,10 @@ const bisection = () => {
 }
 
 
-// หา Xm
-const findxm = (xl, xr) => {
+const findXM = (xl, xr) => {
     return (parseFloat(xl) + parseFloat(xr)) / 2
 }
 
-// แก้สมาการ X
 const funcal = (X) => {
     var expression = document.getElementById("inputEqual").value;
     expr = math.compile(expression);
