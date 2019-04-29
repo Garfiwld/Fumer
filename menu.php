@@ -168,13 +168,12 @@
             </li>
         </ul>
 
-        <ul class="list-unstyled CTAs">
+        <!-- <ul class="list-unstyled CTAs">
             <li>
-                <a href="https://github.com/Garfiwld/Fumer" target="_blank" class="download"><i
-                        class="fab fa-github"></i> Download
+                <a href="https://github.com/Garfiwld/Fumer" target="_blank" class="download">Download
                     source</a>
             </li>
-        </ul>
+        </ul> -->
     </nav>
 
     <!-- Page Content Holder -->
