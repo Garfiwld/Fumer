@@ -81,7 +81,6 @@ const getdata = () => {
             }
         }
     }
-    //call Gauss หลังจากได้ข้อมูล
     Matrix_Inversion(a, b);
 }
 
@@ -117,17 +116,6 @@ const Matrix_Inversion = (a, b) => {
     }
 }
 
-
-
-// แก้สมาการ X
-const funcal = (X, expression) => {
-    expr = math.compile(expression);
-    let scope = {
-        x: parseFloat(X)
-    };
-    return expr.eval(scope);
-}
-
 //ลบ table
 const cleantable = () => {
     var count = document.getElementById("outputInv").getElementsByTagName("tr").length;
@@ -142,7 +130,6 @@ const cleantable = () => {
 
 const CreateTable = (n) => {
     var table = document.getElementById("InputTable");
-    console.log(document.getElementById("InputTable").getElementsByTagName("tr").length)
     if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
         cleantableinput();
     }
@@ -182,35 +169,6 @@ const CreateTable = (n) => {
 const cleantableinput = () => {
     var table = document.getElementById("InputTable");
     table.innerHTML = "";
-}
-
-//การวาดที่จะไปใส่ใน plot
-const draw = () => {
-    try {
-        // compile the expression once
-        const expression = document.getElementById('text1').value
-        const expr = math.compile(expression)
-
-        // evaluate the expression repeatedly for different values of x
-        const xValues = math.range(-10, 10, 0.5).toArray()
-        const yValues = xValues.map(function(x) {
-            return expr.eval({
-                x: x
-            })
-        })
-
-        // render the plot using plotly
-        const trace1 = {
-            x: xValues,
-            y: yValues,
-            type: 'scatter'
-        }
-        const data = [trace1]
-        Plotly.newPlot('plot', data)
-    } catch (err) {
-        console.error(err)
-        alert(err)
-    }
 }
 </script>
 

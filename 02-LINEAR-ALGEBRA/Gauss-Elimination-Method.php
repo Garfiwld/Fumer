@@ -64,7 +64,11 @@ const getdata = () => {
             arr[i].push(document.getElementById(i + "|" + j).value);
         }
     }
-    //call Gauss หลังจากได้ข้อมูล
+    arr = [
+        [2, 1, 1, 4],
+        [1, -1, 2, 2],
+        [2, 2, -1, 3]
+    ];
     Gauss_Elimination(arr);
 }
 
@@ -107,16 +111,6 @@ const Gauss_Elimination = (arr) => {
         }
     }
 
-    console.log("--------");
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < m; j++) {
-            console.log(arr[i][j]);
-        }
-    }
-    console.log("-------------");
-    for (i = 0; i < n; i++) {
-        console.log(result[i]);
-    }
     //add data table
     var num = 1;
     for (i = n - 1; i >= 0; i--) {
@@ -129,41 +123,6 @@ const Gauss_Elimination = (arr) => {
         cell2.innerHTML = result[i];
         num++;
     }
-    /*do{
-
-    		x = x1-((funcal(x1,expression)*(x1-x0))/(funcal(x1,expression)-funcal(x0,expression)));
-    		check = Math.abs((x-x1)/x).toFixed(8);
-    		console.log(check);
-    		n++;
-    		console.log(n);
-    		// Create an empty <tr> element and add it to the 1st position of the table:
-    		var row = table.insertRow(n);
-
-    		// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    		var cell1 = row.insertCell(0);
-    		var cell2 = row.insertCell(1);
-    		var cell3 = row.insertCell(2);
-
-    		// Add some text to the new cells:
-    		cell1.innerHTML = n;
-    		cell2.innerHTML = x;
-    		cell3.innerHTML = check;
-    		x0 = x1;
-    		x1 = x;
-
-    }while(check>0.00001 && n<100)*/
-
-}
-
-
-
-// แก้สมาการ X
-const funcal = (X, expression) => {
-    expr = math.compile(expression);
-    let scope = {
-        x: parseFloat(X)
-    };
-    return expr.eval(scope);
 }
 
 //ลบ table
@@ -217,35 +176,6 @@ const CreateTable = (n) => {
 const cleantableinput = () => {
     var table = document.getElementById("InputTable");
     table.innerHTML = "";
-}
-
-//การวาดที่จะไปใส่ใน plot
-const draw = () => {
-    try {
-        // compile the expression once
-        const expression = document.getElementById('text1').value
-        const expr = math.compile(expression)
-
-        // evaluate the expression repeatedly for different values of x
-        const xValues = math.range(-10, 10, 0.5).toArray()
-        const yValues = xValues.map(function(x) {
-            return expr.eval({
-                x: x
-            })
-        })
-
-        // render the plot using plotly
-        const trace1 = {
-            x: xValues,
-            y: yValues,
-            type: 'scatter'
-        }
-        const data = [trace1]
-        Plotly.newPlot('plot', data)
-    } catch (err) {
-        console.error(err)
-        alert(err)
-    }
 }
 </script>
 

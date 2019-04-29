@@ -1,6 +1,6 @@
 <h1>Bisection Method</h1>
 
-<body onload="bisection(); draw();">
+<body onload=" draw(); checkInput();">
     <div class="content">
         <div class="container-fluid">
 
@@ -9,17 +9,17 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="text1">input Equal</label>
-                                <input type="text" class="form-control" id="text1" placeholder="x^3-x-2"
-                                    value="x^3-x-2">
+                                <label for="inputEqual">input Equal</label>
+                                <input type="text" class="form-control" id="inputEqual" placeholder="e^(-x/4)*(2-x)-1"
+                                    value="e^(-x/4)*(2-x)-1" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text2">Number Start (XL)</label>
-                                <input type="text" class="form-control" id="text2" placeholder="1" value="1">
+                                <label for="inputXL">Number Start (XL)</label>
+                                <input type="text" class="form-control" id="inputXL" placeholder="1" value="0">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text3">Number End (XR)</label>
-                                <input type="text" class="form-control" id="text3" placeholder="5" value="5">
+                                <label for="inputXR">Number End (XR)</label>
+                                <input type="text" class="form-control" id="inputXR" placeholder="5" value="1">
                             </div>
                             <!-- <div class="form-group col-md-4">
                                 <label for="inputPassword4">Error</label>
@@ -30,8 +30,8 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-lg btn-block"
-                        onclick="bisection(); draw(); ">ENTER</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block"
+                        onclick=" draw(); checkInput();">ENTER</button>
                 </div>
             </div>
             <br>
@@ -43,28 +43,20 @@
             <br>
             <div class="card">
                 <div class="card-body">
-                    <table id="output" class="table table-bordered">
+                    <table id="outputTable" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">Iteration</th>
-                                <th scope="col">L</th>
-                                <th scope="col">R</th>
-                                <th scope="col">M</th>
+                                <th scope="col">XL</th>
+                                <th scope="col">XR</th>
+                                <th scope="col">XM</th>
                                 <th scope="col">Error</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="list-data">
-                                <td id="Iteration"></td>
-                                <td id="xl1"></td>
-                                <td id="xr1"></td>
-                                <td id="x"></td>
-                                <td id="error"></td>
-                            </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>
+
         </div>
     </div>
 </body>
@@ -72,26 +64,34 @@
 
 
 <script>
+const checkInput = () => {
+    if (inputXL.value > inputXR.value) {
+        window.alert("inputXL < inputXR");
+    } else {
+        bisection();
+    }
+}
+
+
 const bisection = () => {
 
-    var table = document.getElementById("output");
-    var xl = document.getElementById("text2").value;
-    var xr = document.getElementById("text3").value;
+    var xl = document.getElementById("inputXL").value;
+    var xr = document.getElementById("inputXR").value;
+    var table = document.getElementById("outputTable");
     var findErr = 0.00001;
     // var findErr = document.getElementById("findErr").value;
     var x_old = xr;
     var xm = 0;
     var n = 0;
     // แปลงค่าตัวแปรเป็นตัวแปร Number ด้วยฟังก์ชัน parseInt() และ parseFloat()
-    var check = parseFloat(0.000000);
-    if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
+    var check = 0.0;
+    if (document.getElementById("outputTable").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
     do {
 
         if (xl != xr) {
             xm = findxm(xl, xr);
-            // check = Math.abs(xm - x_old);
             check = Math.abs(xm - x_old).toFixed(8);
         } else {
             check = 0;
@@ -122,30 +122,27 @@ const bisection = () => {
         cell5.innerHTML = check;
         cell5.setAttribute("id", "cell");
 
-        if (parseFloat(xl) < parseFloat(xr)) {
-            if (funcal(xl) < funcal(xr)) {
-                if (funcal(xm) > 0) {
-                    xr = xm
-                } else if (funcal(xm) < 0) {
-                    xl = xm
-                } else if (funcal(xm) == 0) {
-                    xr = xm;
-                    xl = xm;
-                }
-            } else if (funcal(xl) > funcal(xr)) {
-                if (funcal(xm) < 0) {
-                    xr = xm
-                } else if (funcal(xm) > 0) {
-                    xl = xm
-                } else if (funcal(xm) == 0) {
-                    xr = xm;
-                    xl = xm;
-                }
+        if (funcal(xl) < funcal(xr)) {
+            if (funcal(xm) > 0) {
+                xr = xm
+            } else if (funcal(xm) < 0) {
+                xl = xm
+            } else if (funcal(xm) == 0) {
+                xr = xm;
+                xl = xm;
+            }
+        } else if (funcal(xl) > funcal(xr)) {
+            if (funcal(xm) < 0) {
+                xr = xm
+            } else if (funcal(xm) > 0) {
+                xl = xm
+            } else if (funcal(xm) == 0) {
+                xr = xm;
+                xl = xm;
             }
         }
         x_old = xm;
     } while (check > findErr && n < 100)
-    var tempXm = xm;
 }
 
 
@@ -156,7 +153,7 @@ const findxm = (xl, xr) => {
 
 // แก้สมาการ X
 const funcal = (X) => {
-    var expression = document.getElementById("text1").value;
+    var expression = document.getElementById("inputEqual").value;
     expr = math.compile(expression);
     let scope = {
         x: parseFloat(X)
@@ -166,17 +163,16 @@ const funcal = (X) => {
 
 // ลบ table
 const cleantable = () => {
-    var count = document.getElementById("output").getElementsByTagName("tr").length;
+    var count = document.getElementById("outputTable").getElementsByTagName("tr").length;
     for (j = 1; j < count; j++) {
-        document.getElementById("output").deleteRow(1);
+        document.getElementById("outputTable").deleteRow(1);
     }
 }
 
-//การวาดที่จะไปใส่ใน plot
 const draw = () => {
     try {
         // compile the expression once
-        const expression = document.getElementById('text1').value
+        const expression = document.getElementById('inputEqual').value
 
         const expr = math.compile(expression)
 
@@ -196,14 +192,7 @@ const draw = () => {
             type: 'scatter'
         };
 
-        const trace2 = {
-            x: this.tempXm,
-            y: [0],
-            mode: 'markers',
-            type: 'scatter'
-        };
-
-        const data = [trace1, trace2]
+        const data = [trace1]
         Plotly.newPlot('plot', data, {
             responsive: true
         });

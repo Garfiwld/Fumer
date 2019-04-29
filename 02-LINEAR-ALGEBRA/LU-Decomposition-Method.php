@@ -137,16 +137,6 @@ const LU_Decomposition = (a, b) => {
     }
 }
 
-
-// แก้สมาการ X
-const funcal = (X, expression) => {
-    expr = math.compile(expression);
-    let scope = {
-        x: parseFloat(X)
-    };
-    return expr.eval(scope);
-}
-
 //ลบ table
 const cleantable = () => {
     var count = document.getElementById("output").getElementsByTagName("tr").length;
@@ -165,7 +155,6 @@ const cleantable = () => {
 
 const CreateTable = (n) => {
     var table = document.getElementById("InputTable");
-    console.log(document.getElementById("InputTable").getElementsByTagName("tr").length)
     if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
         cleantableinput();
     }

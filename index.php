@@ -40,8 +40,9 @@
     });
     </script>
 
-    <script src="js/math.min.js"></script>
+    <script src="js/math.js"></script>
     <script src="js/plotly-1.35.2.min.js"></script>
+    <script src="js/algebrite.bundle-for-browser.js"></script>
 
 </body>
 

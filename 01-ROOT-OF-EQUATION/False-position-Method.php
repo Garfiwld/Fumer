@@ -9,23 +9,23 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="text1">input Equal</label>
-                                <input type="text" class="form-control" id="text1" placeholder="x^3-x-2"
+                                <label for="inputEqual">input Equal</label>
+                                <input type="text" class="form-control" id="inputEqual" placeholder="x^3-x-2"
                                     value="x^3-x-2">
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="text2">Number Start (XL)</label>
-                                <input type="text" class="form-control" id="text2" placeholder="1" value="1">
+                            <div class="form-group col-md-6">
+                                <label for="inputXL">Number Start (XL)</label>
+                                <input type="text" class="form-control" id="inputXL" placeholder="1" value="1">
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="text3">Number End (XR)</label>
-                                <input type="text" class="form-control" id="text3" placeholder="5" value="5">
+                            <div class="form-group col-md-6">
+                                <label for="inputXR">Number End (XR)</label>
+                                <input type="text" class="form-control" id="inputXR" placeholder="5" value="5">
                             </div>
-                            <div class="form-group col-md-4">
+                            <!-- <div class="form-group col-md-4">
                                 <label for="inputPassword4">Error</label>
                                 <input type="text" class="form-control" id="findErr" placeholder="0.00001"
                                     value="0.00001">
-                            </div>
+                            </div> -->
                         </div>
                     </form>
                 </div>
@@ -43,7 +43,7 @@
             <br>
             <div class="card">
                 <div class="card-body">
-                    <table id="output" class="table table-bordered">
+                    <table id="outputTable" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">Iteration</th>
@@ -72,14 +72,14 @@
 
 <script>
 const FPosition = () => {
-    var table = document.getElementById("output");
-    var xl = document.getElementById("text2").value;
-    var xr = document.getElementById("text3").value;
+    var table = document.getElementById("outputTable");
+    var xl = document.getElementById("inputXL").value;
+    var xr = document.getElementById("inputXR").value;
     var x_old = xr;
     var xm = 0;
     var n = 0;
     var check = parseFloat(0.000000);
-    if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
+    if (document.getElementById("outputTable").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
     do {
@@ -153,7 +153,7 @@ const findxm = (xl, xr) => {
 
 // แก้สมาการ X
 const funcal = (X) => {
-    var expression = document.getElementById("text1").value;
+    var expression = document.getElementById("inputEqual").value;
     expr = math.compile(expression);
     let scope = {
         x: parseFloat(X)
@@ -163,9 +163,9 @@ const funcal = (X) => {
 
 //ลบ table
 const cleantable = () => {
-    var count = document.getElementById("output").getElementsByTagName("tr").length;
+    var count = document.getElementById("outputTable").getElementsByTagName("tr").length;
     for (j = 1; j < count; j++) {
-        document.getElementById("output").deleteRow(1);
+        document.getElementById("outputTable").deleteRow(1);
     }
 }
 
@@ -173,7 +173,7 @@ const cleantable = () => {
 const draw = () => {
     try {
         // compile the expression once
-        const expression = document.getElementById('text1').value
+        const expression = document.getElementById('inputEqual').value
         const expr = math.compile(expression)
 
         // evaluate the expression repeatedly for different values of x

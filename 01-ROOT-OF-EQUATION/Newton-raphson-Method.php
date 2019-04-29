@@ -8,23 +8,14 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="text1">input Equal</label>
-                                <input type="text" class="form-control" id="text1" placeholder="x^3-x-2"
+                                <label for="inputEqual">INPUT EQUAL</label>
+                                <input type="text" class="form-control" id="inputEqual" placeholder="x^3-x-2"
                                     value="x^3-x-2">
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="text2">INITIAL NUMBER (X)</label>
-                                <input type="text" class="form-control" id="text2" placeholder="1" value="1">
+                                <label for="inputX">INITIAL NUMBER (X)</label>
+                                <input type="text" class="form-control" id="inputX" placeholder="1" value="1">
                             </div>
-                            <!-- <div class="form-group col-md-6">
-                                <label for="text3">Number End (XR)</label>
-                                <input type="text" class="form-control" id="text3" placeholder="5" value="5">
-                            </div> -->
-                            <!-- <div class="form-group col-md-4">
-                                <label for="inputPassword4">Error</label>
-                                <input type="text" class="form-control" id="findErr" placeholder="0.00001"
-                                    value="0.00001">
-                            </div> -->
                         </div>
                     </form>
                 </div>
@@ -71,11 +62,11 @@
 const NewRaphson = () => {
     //math.derivative('x^2', 'x')
     var table = document.getElementById("output");
-    var expression = document.getElementById("text1").value;
+    var expression = document.getElementById("inputEqual").value;
     var expression2 = math.derivative(expression, 'x');
     //var expression3 = "("+expression+")+"+"(x-"+x+")*("+math.derivative(expression, 'x')+")"; //หา derivative
     var x = 0;
-    var x_old = document.getElementById("text2").value;
+    var x_old = document.getElementById("inputX").value;
     var n = 0;
     var check = parseFloat(0.00000000);
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
@@ -134,7 +125,7 @@ const cleantable = () => {
 const draw = () => {
     try {
         // compile the expression once
-        const expression = document.getElementById('text1').value
+        const expression = document.getElementById('inputEqual').value
         const expr = math.compile(expression)
 
         // evaluate the expression repeatedly for different values of x

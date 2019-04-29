@@ -1,6 +1,6 @@
 <h1>Composite Simpson's Rule</h1>
 
-<body onload="Composite_Simpson(); draw();">
+<body onload="draw(); Composite_Simpson();">
     <div class="content">
         <div class="container-fluid">
 
@@ -10,8 +10,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="text1">input Equal</label>
-                                <input type="text" class="form-control" id="text1" placeholder="1/(x^5+7)^(1/3)"
-                                    value="1/(x^5+7)^(1/3)">
+                                <input type="text" class="form-control" id="text1" placeholder="1/3*x^3"
+                                    value="1/3*x^3">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="text2">Number Start (XL)</label>
@@ -19,18 +19,18 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="text3">Number End (XR)</label>
-                                <input type="text" class="form-control" id="text3" placeholder="1" value="1">
+                                <input type="text" class="form-control" id="text3" placeholder="1" value="5">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="text4">input N split</label>
-                                <input type="text" class="form-control" id="text4" placeholder="4" value="4">
+                                <input type="text" class="form-control" id="text4" placeholder="4" value="10">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-block"
-                        onclick="Composite_Simpson(); draw();">ENTER</button>
+                        onclick=" draw(); Composite_Simpson();">ENTER</button>
                 </div>
             </div>
             <br>
@@ -57,8 +57,9 @@
     </div>
 </body>
 
+
 <script>
-const Composite_Simpson = () => {
+const Composite_Trapezoidal = () => {
     var table = document.getElementById("output");
     var expression = document.getElementById("text1").value;
     var xstart = document.getElementById("text2").value;
@@ -73,15 +74,12 @@ const Composite_Simpson = () => {
 
     var temp = h / 2;
     var temp2 = 0;
-    var temp3 = 0;
     var tempy = 0;
-    var tempn = 1;
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
     var h = Math.abs((xstart - xend) / n);
     var currentx = xstart;
-
 
     tempy = funcal(currentx, expression);
     var result = tempy;
@@ -90,25 +88,15 @@ const Composite_Simpson = () => {
     currentx = currentx + h;
 
     for (i = 0; i < n - 1; i++) {
-        if (tempn % 2 == 0) {
-            tempy = funcal(currentx, expression);
-            temp3 = temp3 + tempy;
-            arrayx.push(currentx);
-            arrayy.push(tempy);
-            currentx = currentx + h;
-        } else {
-            tempy = funcal(currentx, expression);
-            temp2 = temp2 + tempy;
-            arrayx.push(currentx);
-            arrayy.push(tempy);
-            currentx = currentx + h;
-        }
-        tempn++;
+        tempy = funcal(currentx, expression);
+        temp2 = temp2 + tempy;
+        arrayx.push(currentx);
+        arrayy.push(tempy);
+        currentx = currentx + h;
     }
-
     tempy = funcal(currentx, expression);
-    result = result + tempy + temp2 * 4 + temp3 * 2;
-    result = result * (h / 3)
+    result = result + tempy + temp2 * 2;
+    result = result * (h / 2)
     arrayx.push(currentx);
     arrayy.push(tempy);
 
@@ -127,6 +115,7 @@ const Composite_Simpson = () => {
     cell1.innerHTML = result;
     cell2.innerHTML = realarea;
     cell3.innerHTML = error;
+
 
 }
 
@@ -207,8 +196,6 @@ const draw = (x, y) => {
 </script>
 
 
-
-<script src="js/algebrite.bundle-for-browser.js"></script>
 
 
 

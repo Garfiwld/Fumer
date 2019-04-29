@@ -157,18 +157,6 @@ const Gauss_Jordan = (arr) => {
             result.push(0);
         }
     }
-
-    // console.log("--------");
-    // for (i = 0; i < n; i++) {
-    //     for (j = 0; j < m; j++) {
-    //         console.log(arr[i][j]);
-    //     }
-    // }
-    // console.log("-------------");
-    // for (i = 0; i < n; i++) {
-    //     console.log(result[i]);
-    // }
-    //add data table
     var num = 1;
     for (i = n - 1; i >= 0; i--) {
         var row = table.insertRow(num);
@@ -180,17 +168,6 @@ const Gauss_Jordan = (arr) => {
         cell2.innerHTML = result[i];
         num++;
     }
-}
-
-
-
-// แก้สมาการ X
-const funcal = (X, expression) => {
-    expr = math.compile(expression);
-    let scope = {
-        x: parseFloat(X)
-    };
-    return expr.eval(scope);
 }
 
 //ลบ table
@@ -206,33 +183,4 @@ const cleantableinput = () => {
     var table = document.getElementById("InputTable");
     table.innerHTML = "";
 }
-
-//การวาดที่จะไปใส่ใน plot
-// const draw = () => {
-//     try {
-//         // compile the expression once
-//         const expression = document.getElementById('text1').value
-//         const expr = math.compile(expression)
-
-//         // evaluate the expression repeatedly for different values of x
-//         const xValues = math.range(-10, 10, 0.5).toArray()
-//         const yValues = xValues.map(function(x) {
-//             return expr.eval({
-//                 x: x
-//             })
-//         })
-
-//         // render the plot using plotly
-//         const trace1 = {
-//             x: xValues,
-//             y: yValues,
-//             type: 'scatter'
-//         }
-//         const data = [trace1]
-//         Plotly.newPlot('plot', data)
-//     } catch (err) {
-//         console.error(err)
-//         alert(err)
-//     }
-// }
 </script>

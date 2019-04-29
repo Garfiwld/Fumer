@@ -1,34 +1,34 @@
 <h1>Conjugate Gradient Method</h1>
 
-<body onload="CreateTable(text1.value);">
+<body onload="createTable(inputN.value);">
     <div class="content">
         <div class="container-fluid">
 
             <div class="card">
                 <div class="card-body">
-                    <h5>input 'n' Create table input</h5>
-                    <input type="text" class="form-control" id="text1" placeholder="3" name="text" placeholder="x^3-x-2"
-                        value="3" required>
+                    <label for="inputN">INPUT 'N' CREATE TABLE INPUT</label>
+                    <input type="text" class="form-control" id="inputN" placeholder="3" value="3" required>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(text1.value)">ENTER</button>
+                        onclick="createTable(inputN.value)">ENTER</button>
                 </div>
             </div>
             <br>
             <div class="card">
                 <div class="card-body">
-                    <h5>Table Input</h5>
+                    <label for="InputTable">TABLE INPUT</label>
                     <table id="InputTable"></table>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="getdata()">ENTER</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block"
+                        onclick="Conjugate_Gradient()">ENTER</button>
                 </div>
             </div>
             <br>
             <div class="card">
                 <div class="card-body">
-                    <h5>output (Result)</h5>
+                    <label for="output">OUTPUT (RESULT)</label>
                     <table id="output" class="table table-bordered">
                         <thead>
                             <tr>
@@ -48,7 +48,7 @@
             <br>
             <div class="card">
                 <div class="card-header">
-                    <h5>output Iteration</h5>
+                    <label for="outputIter">OUTPUT ITERATION</label>
                     <table id="outputIter" class="table table-bordered"></table>
                 </div>
             </div>
@@ -58,6 +58,51 @@
 </body>
 
 <script>
+// สร้างตาราง Input
+const createTable = (n) => {
+    var table = document.getElementById("InputTable");
+    //ล้างตาราง Input
+    if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
+        cleantableinput();
+    }
+
+    var row = table.insertRow(0);
+    for (i = 0; i <= parseInt(n) + 2; i++) {
+        if (i == 0) {
+            var cell = row.insertCell(i);
+            cell.innerHTML = "";
+        } else {
+            if (i == parseInt(n) + 1) {
+                var cell = row.insertCell(i);
+                cell.innerHTML = "Y";
+            } else if (i == parseInt(n) + 2) {
+                var cell = row.insertCell(i);
+                cell.innerHTML = "initial X";
+            } else {
+                var cell = row.insertCell(i);
+                cell.innerHTML = "X" + parseInt(i - 1);
+            }
+        }
+    }
+    for (i = 1; i <= n; i++) {
+        var row = table.insertRow(i);
+        for (j = 0; j <= parseInt(n) + 2; j++) {
+            if (j == 0) {
+                var cell = row.insertCell(j);
+                cell.innerHTML = "a" + parseInt(i);
+            } else {
+                var cell = row.insertCell(j);
+                var x = document.createElement("INPUT");
+                x.setAttribute("type", "text");
+                x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
+                x.setAttribute("class", "form-control");
+                cell.appendChild(x);
+            }
+        }
+    }
+}
+
+// รับค่าจาก inputTable
 const getdata = () => {
     n = document.getElementById("text1").value;
     var arr = [];
@@ -67,7 +112,6 @@ const getdata = () => {
             arr[i].push(document.getElementById(i + "|" + j).value);
         }
     }
-
     var a = [];
     var b = [];
     var x = [];
@@ -83,8 +127,6 @@ const getdata = () => {
             }
         }
     }
-
-    //call
     Conjugate_Gradient(a, b, x);
 }
 
@@ -152,9 +194,7 @@ const Conjugate_Gradient = (a, b, x) => {
             math.multiply(math.multiply(math.transpose(r), a), d),
             math.multiply(math.multiply(math.transpose(d), a), d));
         d = math.subtract(math.multiply(alpha, d), r);
-        console.log(check);
     } while (check > 0.00001 && Iteration < 100)
-    console.log(x);
     var num = 1;
     for (i = 0; i < n; i++) {
         var row = table.insertRow(num);
@@ -168,16 +208,6 @@ const Conjugate_Gradient = (a, b, x) => {
 }
 
 
-
-// แก้สมาการ X
-const funcal = (X, expression) => {
-    expr = math.compile(expression);
-    let scope = {
-        x: parseFloat(X)
-    };
-    return expr.eval(scope);
-}
-
 //ลบ table
 const cleantable = () => {
     var count = document.getElementById("output").getElementsByTagName("tr").length;
@@ -190,84 +220,9 @@ const cleantable = () => {
     }
 }
 
-const CreateTable = (n) => {
-    var table = document.getElementById("InputTable");
-    console.log(document.getElementById("InputTable").getElementsByTagName("tr").length)
-    if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
-        cleantableinput();
-    }
-
-    var row = table.insertRow(0);
-
-    console.log(n);
-    for (i = 0; i <= parseInt(n) + 2; i++) {
-        if (i == 0) {
-            var cell = row.insertCell(i);
-            cell.innerHTML = "";
-        } else {
-            if (i == parseInt(n) + 1) {
-                var cell = row.insertCell(i);
-                cell.innerHTML = "Y";
-            } else if (i == parseInt(n) + 2) {
-                var cell = row.insertCell(i);
-                cell.innerHTML = "initial X";
-            } else {
-                var cell = row.insertCell(i);
-                cell.innerHTML = "X" + parseInt(i - 1);
-            }
-        }
-    }
-    for (i = 1; i <= n; i++) {
-        var row = table.insertRow(i);
-        for (j = 0; j <= parseInt(n) + 2; j++) {
-            if (j == 0) {
-                var cell = row.insertCell(j);
-                cell.innerHTML = "a" + parseInt(i);
-            } else {
-                var cell = row.insertCell(j);
-                var x = document.createElement("INPUT");
-                x.setAttribute("type", "text");
-                x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
-                x.setAttribute("class", "form-control");
-                cell.appendChild(x);
-            }
-        }
-    }
-
-}
-
 const cleantableinput = () => {
     var table = document.getElementById("InputTable");
     table.innerHTML = "";
-}
-
-//การวาดที่จะไปใส่ใน plot
-const draw = () => {
-    try {
-        // compile the expression once
-        const expression = document.getElementById('text1').value
-        const expr = math.compile(expression)
-
-        // evaluate the expression repeatedly for different values of x
-        const xValues = math.range(-10, 10, 0.5).toArray()
-        const yValues = xValues.map(function(x) {
-            return expr.eval({
-                x: x
-            })
-        })
-
-        // render the plot using plotly
-        const trace1 = {
-            x: xValues,
-            y: yValues,
-            type: 'scatter'
-        }
-        const data = [trace1]
-        Plotly.newPlot('plot', data)
-    } catch (err) {
-        console.error(err)
-        alert(err)
-    }
 }
 </script>
 
