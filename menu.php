@@ -62,7 +62,7 @@
             </li>
             <li>
                 <a href="#interSubmenu" data-toggle="collapse" aria-expanded="false"
-                    class="dropdown-toggle">Interpolation and Extrapolation</a>
+                    class="dropdown-toggle">INTERPOLATION AND EXTRAPOLATION</a>
                 <ul class="collapse list-unstyled" id="interSubmenu">
                     <li>
                         <a href="index.php?page=Newton-Interpolation">Newton Interpolation</a>
@@ -76,32 +76,70 @@
                 </ul>
             </li>
             <li>
+                <a href="#leastSubmenu" data-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle">LEAST-SQUARES REGRESSION</a>
+                <ul class="collapse list-unstyled" id="leastSubmenu">
+                    <li>
+                        <a href="index.php?page=Regression">Regression</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=Multiple-Regression">Multiple Regression</a>
+                    </li>
+                </ul>
+            <li>
                 <a href="#nuinterSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">NUMERICAL
                     INTEGRATION TECHNIQUES</a>
                 <ul class="collapse list-unstyled" id="nuinterSubmenu">
-                    <li>
+                    <!-- <li>
                         <a href="index.php?page=Trapezoidal-Rule">Trapezoidal Rule</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="index.php?page=Composite-Trapezoidal-Rule">Composite Trapezoidal Rule</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="index.php?page=Simpson-s-Rule">Simpson's Rule</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="index.php?page=Composite-Simpsons-Rule">Composite Simpson's Rule</a>
                     </li>
                     <li>
                         <a href="index.php?page=Newton-Cotes-Integration-Formulas">Newton-Cotes Integration Formulas</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="index.php?page=Romberg-Integration">Romberg Integration</a>
                     </li>
                     <li>
                         <a href="index.php?page=Gauss-Quadrature">Gauss Quadrature</a>
+                    </li> -->
+                </ul>
+            </li>
+            <li>
+                <a href="#nudiffSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">NUMERICAL
+                    DIFFERENTIATION</a>
+                <ul class="collapse list-unstyled" id="nudiffSubmenu">
+                    <li>
+                        <a href="index.php?page=First-Forward">First Forward</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=Backward">Backward</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=Central">Central</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=More-Acc-First-Forward">More Acc First Forward</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=More-Acc-Backward">More Acc Backward</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=More-Acc-Central">More Acc Central</a>
                     </li>
                 </ul>
             </li>
+
+
+
             <li>
                 <a href="#ordinarySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">ORDINARY
                     DIFFERENTIAL EQUATIONS</a>
@@ -115,16 +153,16 @@
                     <li>
                         <a href="index.php?page=Modified-Euler-s-method">Modified Euler's method</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="index.php?page=Runge-Kutta-method">Runge Kutta method</a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a href="index.php?page=System-of-first-order-differential-equations">System of first-order
                             differential equations</a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a href="index.php?page=Multistep-method">Multistep method</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- <a href="index.php?page=codeTest">Test</a> -->
             </li>
@@ -231,50 +269,79 @@
             case "Spline-Interpolation":
                 include("03-INTERPOLATION-AND-EXTRAPOLATION\Spline-Interpolation.php");
                 break;
-            //NUMERICAL INTEGRATION TECHNIQUES
-            case "Trapezoidal-Rule":
-                include("NUMERICAL-INTEGRATION-TECHNIQUES\Trapezoidal-Rule.php");
+            //04-LEAST-SQUARES-REGRESSION
+            case "Regression":
+                include("04-LEAST-SQUARES-REGRESSION\Regression.php");
                 break;
+            case "Multiple-Regression":
+                include("04-LEAST-SQUARES-REGRESSION\Multiple Regression.php");
+                break;
+            
+            //05-NUMERICAL-INTEGRATION-TECHNIQUES
+            // case "Trapezoidal-Rule":
+            //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Trapezoidal-Rule.php");
+            //     break;
             case "Composite-Trapezoidal-Rule":
-                include("NUMERICAL-INTEGRATION-TECHNIQUES\Composite-Trapezoidal-Rule.php");
+                include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Composite-Trapezoidal-Rule.php");
                 break;
-            case "Simpson-s-Rule":
-                include("NUMERICAL-INTEGRATION-TECHNIQUES\Simpson-s-Rule.php");
-                break;
+            // case "Simpson-s-Rule":
+            //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Simpson-s-Rule.php");
+            //     break;
             case "Composite-Simpsons-Rule":
-                include("NUMERICAL-INTEGRATION-TECHNIQUES\Composite-Simpsons-Rule.php");
+                include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Composite-Simpsons-Rule.php");
                 break;
             case "Newton-Cotes-Integration-Formulas":
-                include("NUMERICAL-INTEGRATION-TECHNIQUES\Newton-Cotes-Integration-Formulas.php");
+                include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Newton-Cotes-Integration-Formulas.php");
                 break;
-            case "Romberg-Integration":
-                include("NUMERICAL-INTEGRATION-TECHNIQUES\Romberg-Integration.php");
+            // case "Romberg-Integration":
+            //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Romberg-Integration.php");
+            //     break;
+            // case "Gauss-Quadrature":
+            //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Gauss-Quadrature.php");
+            //     break;
+            
+            //06-NUMERICAL-DIFFERENTIATION
+            case "First-Forward":
+                include("06-NUMERICAL-DIFFERENTIATION\First-Forward.php");
                 break;
-            case "Gauss-Quadrature":
-                include("NUMERICAL-INTEGRATION-TECHNIQUES\Gauss-Quadrature.php");
+            case "Backward":
+                include("06-NUMERICAL-DIFFERENTIATION\Backward.php");
                 break;
-            //ORDINARY DIFFERENTIAL EQUATIONS
+            case "Central":
+                include("06-NUMERICAL-DIFFERENTIATION\Central.php");
+                break;
+            case "More-Acc-First-Forward":
+                include("06-NUMERICAL-DIFFERENTIATION\More-Acc-First-Forward.php");
+                break;
+            case "":
+                include("06-NUMERICAL-DIFFERENTIATION\.php");
+                break;
+            case "":
+                include("06-NUMERICAL-DIFFERENTIATION\.php");
+                break;
+
+            //07-ORDINARY-DIFFERENTIAL-EQUATIONS
             case "Euler-s-method":
-                include("ORDINARY-DIFFERENTIAL-EQUATIONS\Euler-s-method.php");
+                include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Euler-s-method.php");
                 break;
             case "Heun-s-method":
-                include("ORDINARY-DIFFERENTIAL-EQUATIONS\Heun-s-method.php");
+                include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Heun-s-method.php");
                 break;
             case "Modified-Euler-s-method":
-                include("ORDINARY-DIFFERENTIAL-EQUATIONS\Modified-Euler-s-method.php");
+                include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Modified-Euler-s-method.php");
                 break;
-            case "Runge-Kutta-method":
-                include("ORDINARY-DIFFERENTIAL-EQUATIONS\Runge-Kutta-method.php");
-                break;
-            case "System-of-first-order-differential-equations":
-                include("ORDINARY-DIFFERENTIAL-EQUATIONS\System-of-first-order-differential-equations.php");
-                break;
-            case "Multistep-method":
-                include("ORDINARY-DIFFERENTIAL-EQUATIONS\Multistep-method.php");
-                break;
-            case "codeTest":
-                include("codeTest.php");
-                break;
+            // case "Runge-Kutta-method":
+            //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Runge-Kutta-method.php");
+            //     break;
+            // case "System-of-first-order-differential-equations":
+            //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\System-of-first-order-differential-equations.php");
+            //     break;
+            // case "Multistep-method":
+            //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Multistep-method.php");
+            //     break;
+            // case "codeTest":
+            //     include("codeTest.php");
+            //     break;
             // case "":
             //     include("XXX\.php");
             //     break;
