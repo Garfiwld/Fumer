@@ -1,5 +1,6 @@
+<h1>Bisection Method</h1>
+
 <body onload="bisection(); draw();">
-    <h1>Bisection Method</h1>
     <div class="content">
         <div class="container-fluid">
 

@@ -313,11 +313,11 @@
             case "More-Acc-First-Forward":
                 include("06-NUMERICAL-DIFFERENTIATION\More-Acc-First-Forward.php");
                 break;
-            case "":
-                include("06-NUMERICAL-DIFFERENTIATION\.php");
+            case "More-Acc-Backward":
+                include("06-NUMERICAL-DIFFERENTIATION\More-Acc-Backward.php");
                 break;
-            case "":
-                include("06-NUMERICAL-DIFFERENTIATION\.php");
+            case "More-Acc-Central":
+                include("06-NUMERICAL-DIFFERENTIATION\More-Acc-Central.php");
                 break;
 
             //07-ORDINARY-DIFFERENTIAL-EQUATIONS
