@@ -1,23 +1,23 @@
 <h1>Multiple Regression</h1>
 
-<body onload="CreateTable(text1.value,text3.value);">
+<body onload="CreateTable(inputN.value,inputX.value);">
     <div class="content">
         <div class="container-fluid">
 
             <div class="card">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="text1">INPUT 'N' CREATE TABLE INPUT</label>
-                        <input id="text1" type="text" class="form-control" placeholder="3" value="3" required>
+                        <label for="inputN">INPUT 'N' CREATE TABLE INPUT</label>
+                        <input id="inputN" type="text" class="form-control" placeholder="3" value="3" required>
                     </div>
                     <div class="form-group">
-                        <label for="text3">INPUT 'X' (COUNT X)</label>
-                        <input id="text3" type="text" class="form-control" placeholder="3" value="3" required>
+                        <label for="inputX">INPUT 'X' (COUNT X)</label>
+                        <input id="inputX" type="text" class="form-control" placeholder="3" value="3" required>
                     </div>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(text1.value,text3.value)">ENTER</button>
+                        onclick="CreateTable(inputN.value,inputX.value)">ENTER</button>
                 </div>
             </div>
             <br>
@@ -56,8 +56,8 @@
 
 <script>
 const getdata = () => {
-    n = document.getElementById("text1").value;
-    m = document.getElementById("text3").value;
+    n = document.getElementById("inputN").value;
+    m = document.getElementById("inputX").value;
     var arr = [];
     for (i = 0; i < n; i++) {
         arr.push([]);

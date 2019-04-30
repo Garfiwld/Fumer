@@ -8,17 +8,17 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="text1">input Equal</label>
-                                <input type="text" class="form-control" id="text1" placeholder="x^3-x-2"
-                                    value="x^3-x-2">
+                                <label for="inputEqual">input Equal</label>
+                                <input type="text" class="form-control" id="inputEqual" placeholder="e^x*sin(x)-1"
+                                    value="e^x*sin(x)-1">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text2">INITIAL NUMBER1 (X0)</label>
-                                <input type="text" class="form-control" id="text2" placeholder="1" value="1">
+                                <label for="inputX0">INITIAL NUMBER1 (X0)</label>
+                                <input type="text" class="form-control" id="inputX0" placeholder="0.5" value="0.5">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text3">INITIAL NUMBER2 (X1)</label>
-                                <input type="text" class="form-control" id="text3" placeholder="5" value="5">
+                                <label for="inputX1">INITIAL NUMBER2 (X1)</label>
+                                <input type="text" class="form-control" id="inputX1" placeholder="0.6" value="0.6">
                             </div>
                             <!-- <div class="form-group col-md-4">
                                 <label for="inputPassword4">Error</label>
@@ -47,7 +47,7 @@
                             <tr>
                                 <th scope="col">Iteration</th>
                                 <th scope="col">X</th>
-                                <th scope="col">|xi-xi-1|</th>
+                                <th scope="col">Error(%)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,11 +69,10 @@
 <script>
 const Secant = () => {
     var table = document.getElementById("output");
-    var expression = document.getElementById("text1").value;
-    var x0 = document.getElementById("text2").value;
-    var x1 = document.getElementById("text3").value;
-    var x2 = 0;
-    var x = 0;
+    var expression = document.getElementById("inputEqual").value;
+    var x0 = document.getElementById("inputX0").value;
+    var x1 = document.getElementById("inputX1").value;
+    var xNew = 0;
     var n = 0;
     var check = parseFloat(0.000000);
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
@@ -81,11 +80,14 @@ const Secant = () => {
     }
     do {
 
-        x = x1 - ((funcal(x1, expression) * (x1 - x0)) / (funcal(x1, expression) - funcal(x0, expression)));
-        check = Math.abs((x - x1) / x).toFixed(8);
-        console.log(check);
+        xNew = x1 - funcal(x1) * ((x1 - x0) / (funcal(x1) - funcal(x0)));
+        check = Math.abs((xNew - x1) / xNew).toFixed(8);
+
+        if (n > 0) {
+            var errPer = Math.abs(((xNew - x1) / xNew) * 100).toFixed(8)
+            console.log(errPer);
+        }
         n++;
-        console.log(n);
         // Create an empty <tr> element and add it to the 1st position of the table:
         var row = table.insertRow(n);
 
@@ -95,15 +97,15 @@ const Secant = () => {
         var cell3 = row.insertCell(2);
 
         // Add some text to the new cells:
+        cell1.innerHTML = n;
         cell1.setAttribute("id", "cell");
+        cell2.innerHTML = xNew;
         cell2.setAttribute("id", "cell");
+        cell3.innerHTML = errPer;
         cell3.setAttribute("id", "cell");
 
-        cell1.innerHTML = n;
-        cell2.innerHTML = x;
-        cell3.innerHTML = check;
         x0 = x1;
-        x1 = x;
+        x1 = xNew;
 
     } while (check > 0.00001 && n < 100)
 }
@@ -111,7 +113,8 @@ const Secant = () => {
 
 
 // แก้สมาการ X
-const funcal = (X, expression) => {
+const funcal = (X) => {
+    var expression = document.getElementById("inputEqual").value;
     expr = math.compile(expression);
     let scope = {
         x: parseFloat(X)
@@ -131,7 +134,7 @@ const cleantable = () => {
 const draw = () => {
     try {
         // compile the expression once
-        const expression = document.getElementById('text1').value
+        const expression = document.getElementById('inputEqual').value
         const expr = math.compile(expression)
 
         // evaluate the expression repeatedly for different values of x

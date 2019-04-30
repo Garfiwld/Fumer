@@ -1,23 +1,23 @@
 <h1>Regression</h1>
 
-<body onload="draw(); CreateTable(text1.value);">
+<body onload="draw(); CreateTable(inputN.value);">
     <div class="content">
         <div class="container-fluid">
 
             <div class="card">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="text1">INPUT 'N' CREATE TABLE INPUT</label>
-                        <input id="text1" type="text" class="form-control" placeholder="3" value="3" required>
+                        <label for="inputN">INPUT 'N' CREATE TABLE INPUT</label>
+                        <input id="inputN" type="text" class="form-control" placeholder="3" value="3" required>
                     </div>
                     <div class="form-group">
-                        <label for="text2">COUNT A (REGRESSION)</label>
-                        <input id="text2" type="text" class="form-control" placeholder="3" value="3" required>
+                        <label for="inputA">COUNT A (REGRESSION)</label>
+                        <input id="inputA" type="text" class="form-control" placeholder="3" value="3" required>
                     </div>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(text1.value)">ENTER</button>
+                        onclick="CreateTable(inputN.value)">ENTER</button>
                 </div>
             </div>
             <br>
@@ -71,7 +71,7 @@
 
 <script>
 const getdata = () => {
-    n = document.getElementById("text1").value;
+    n = document.getElementById("inputN").value;
     tempx = document.getElementById("inputX").value;
     tempfx = document.getElementById("inputFX").value;
 
@@ -105,7 +105,7 @@ const getdata = () => {
 
 const Regression = (x, y, a) => {
     var n = x.length;
-    var m = document.getElementById("text2").value;
+    var m = document.getElementById("inputA").value;
     var m = parseInt(m) - 1;
     var table = document.getElementById("output");
     var table2 = document.getElementById("outputR");

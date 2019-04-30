@@ -10,21 +10,21 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="text1">input Equal</label>
-                                <input type="text" class="form-control" id="text1" placeholder="1/3*x^3"
+                                <label for="inputEqual">INPUT EQUAL</label>
+                                <input type="text" class="form-control" id="inputEqual" placeholder="1/3*x^3"
                                     value="1/3*x^3">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="text2">Number Start (XL)</label>
-                                <input type="text" class="form-control" id="text2" placeholder="0" value="0">
+                                <label for="inputXStart">INPUT X START</label>
+                                <input type="text" class="form-control" id="inputXStart" placeholder="0" value="0">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="text3">Number End (XR)</label>
-                                <input type="text" class="form-control" id="text3" placeholder="1" value="5">
+                                <label for="inputXEnd">INPUT X END</label>
+                                <input type="text" class="form-control" id="inputXEnd" placeholder="1" value="5">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="text4">input N split</label>
-                                <input type="text" class="form-control" id="text4" placeholder="4" value="10">
+                                <label for="inputN">INPUT N SPLIT</label>
+                                <input type="text" class="form-control" id="inputN" placeholder="4" value="10">
                             </div>
                         </div>
                     </form>
@@ -61,10 +61,10 @@
     <script>
     const Composite_Simpson = () => {
         var table = document.getElementById("output");
-        var expression = document.getElementById("text1").value;
-        var xstart = document.getElementById("text2").value;
-        var xend = document.getElementById("text3").value;
-        var n = document.getElementById("text4").value;
+        var expression = document.getElementById("inputEqual").value;
+        var xstart = document.getElementById("inputXStart").value;
+        var xend = document.getElementById("inputXEnd").value;
+        var n = document.getElementById("inputN").value;
         n = parseInt(n);
         xstart = parseFloat(xstart);
         xend = parseFloat(xend);
@@ -167,27 +167,6 @@
     //การวาดที่จะไปใส่ใน plot
     const draw = (x, y) => {
         try {
-            /*// compile the expression once
-            const expression = document.getElementById('text1').value
-            const expr = math.compile(expression)
-
-            // evaluate the expression repeatedly for different values of x
-            const xValues = math.range(-10, 10, 0.5).toArray()
-            const yValues = xValues.map(function (x) {
-            	return expr.eval({x: x})
-            })
-
-            // render the plot using plotly
-            const trace1 = {
-            	x: xValues,
-            	y: yValues,
-            	type: 'scatter'
-            }
-            const trace2 = {
-            	x: xValues,
-            	y: yValues,
-            	type: 'scatter'
-            }*/
             const data = [{
                 x: x,
                 y: y
@@ -197,9 +176,6 @@
                     t: 0
                 }
             });
-
-            /*const data = [trace1,trace2]
-            Plotly.newPlot('plot', data)*/
         } catch (err) {
             console.error(err)
             alert(err)

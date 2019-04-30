@@ -8,13 +8,13 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="text1">input Equal</label>
-                                <input type="text" class="form-control" id="text1" placeholder="x^3-x-2"
-                                    value="x^3-x-2">
+                                <label for="inputEqual">input Equal</label>
+                                <input type="text" class="form-control" id="inputEqual" placeholder="2-e^(x/4)"
+                                    value="2-e^(x/4)" required>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="text2">INITIAL NUMBER (X)</label>
-                                <input type="text" class="form-control" id="text2" placeholder="1" value="1">
+                                <label for="inputX">INITIAL NUMBER (X0)</label>
+                                <input type="text" class="form-control" id="inputX" placeholder="1" value="1">
                             </div>
                             <!-- <div class="form-group col-md-6">
                                 <label for="text3">Number End (XR)</label>
@@ -54,7 +54,7 @@
                         <tbody>
                             <tr class="list-data">
                                 <td id="Iteration"></td>
-                                <td id="x_old"></td>
+                                <td id="xOld"></td>
                                 <td id="x_new"></td>
                                 <td id="error"></td>
                             </tr>
@@ -69,8 +69,8 @@
 <script>
 const OnePoint = () => {
     var table = document.getElementById("output");
-    var x = document.getElementById("text2").value;
-    var x_old = 0;
+    var x = document.getElementById("inputX").value;
+    var xOld = 0;
     var n = 0;
     var check = parseFloat(0.000000);
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
@@ -78,10 +78,19 @@ const OnePoint = () => {
     }
     do {
         x = funcal(x);
-        check = Math.abs((x - x_old) / x).toFixed(8);
-        console.log(check);
-        n++;
+
+        check = Math.abs((x - xOld) / x).toFixed(8);
         console.log(n);
+        console.log(x);
+
+        if (n > 0) {
+            var errPer = Math.abs(((x - xOld) / x) * 100).toFixed(8)
+            console.log(errPer);
+        }
+        n++;
+
+        xOld = x;
+
         // Create an empty <tr> element and add it to the 1st position of the table:
         var row = table.insertRow(n);
 
@@ -96,23 +105,21 @@ const OnePoint = () => {
 
         cell1.innerHTML = n;
         cell1.setAttribute("id", "cell");
-        cell2.innerHTML = x_old;
+        cell2.innerHTML = xOld;
         cell2.setAttribute("id", "cell");
         cell3.innerHTML = x;
         cell3.setAttribute("id", "cell");
-        cell4.innerHTML = check;
+        cell4.innerHTML = errPer;
         cell4.setAttribute("id", "cell");
 
-        x_old = x;
-
-    } while (check > 0.00001 && n < 100)
+    } while (check > 0.00001 && n != 0)
 }
 
 
 
 // แก้สมาการ X
 const funcal = (X) => {
-    var expression = document.getElementById("text1").value;
+    var expression = document.getElementById("inputEqual").value;
     expr = math.compile(expression);
     let scope = {
         x: parseFloat(X)
@@ -132,7 +139,7 @@ const cleantable = () => {
 const draw = () => {
     try {
         // compile the expression once
-        const expression = document.getElementById('text1').value
+        const expression = document.getElementById('inputEqual').value
         const expr = math.compile(expression)
 
         // evaluate the expression repeatedly for different values of x

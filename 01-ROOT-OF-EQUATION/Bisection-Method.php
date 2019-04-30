@@ -15,11 +15,11 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputXL">Number Start (XL)</label>
-                                <input type="text" class="form-control" id="inputXL" placeholder="1" value="0">
+                                <input type="text" class="form-control" id="inputXL" placeholder="0" value="0">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputXR">Number End (XR)</label>
-                                <input type="text" class="form-control" id="inputXR" placeholder="5" value="1">
+                                <input type="text" class="form-control" id="inputXR" placeholder="1" value="1">
                             </div>
                             <!-- <div class="form-group col-md-4">
                                 <label for="inputPassword4">Error</label>
@@ -50,7 +50,7 @@
                                 <th scope="col">XL</th>
                                 <th scope="col">XR</th>
                                 <th scope="col">XM</th>
-                                <th scope="col">Error</th>
+                                <th scope="col">Error(%)</th>
                             </tr>
                         </thead>
                     </table>
@@ -80,8 +80,9 @@ const bisection = () => {
     var table = document.getElementById("outputTable");
     var findErr = 0.00001;
     // var findErr = document.getElementById("findErr").value;
-    var x_old = xr;
+    var xmOld = xr;
     var xm = 0;
+    var xmOld = 0;
     var n = 0;
     var check = 0.0;
     if (document.getElementById("outputTable").getElementsByTagName("tr").length > 0) {
@@ -90,14 +91,20 @@ const bisection = () => {
     do {
 
         if (xl != xr) {
-            xm = findXM(xl, xr);
-            check = Math.abs(xm - x_old).toFixed(8);
+            xm = (xl * funcal(xr) - xr * funcal(xl)) / (funcal(xr) - funcal(xl));
+            check = Math.abs(xm - xmOld).toFixed(8);
         } else {
             check = 0;
         }
 
-        n++;
+        console.log(n);
 
+        if (n > 0) {
+            var errPer = Math.abs(((xm - xmOld) / xm) * 100).toFixed(8)
+            console.log(errPer);
+        }
+
+        n++;
         // Create an empty <tr> element and add it to the 1st position of the table:
         var row = table.insertRow(n);
 
@@ -118,35 +125,18 @@ const bisection = () => {
         cell3.setAttribute("id", "cell");
         cell4.innerHTML = xm;
         cell4.setAttribute("id", "cell");
-        cell5.innerHTML = check;
+        cell5.innerHTML = errPer;
         cell5.setAttribute("id", "cell");
 
-        if (funcal(xl) < funcal(xr)) {
-            if (funcal(xm) > 0) {
-                xr = xm
-            } else if (funcal(xm) < 0) {
-                xl = xm
-            } else if (funcal(xm) == 0) {
-                xr = xm;
-                xl = xm;
-            }
-        } else if (funcal(xl) > funcal(xr)) {
-            if (funcal(xm) < 0) {
-                xr = xm
-            } else if (funcal(xm) > 0) {
-                xl = xm
-            } else if (funcal(xm) == 0) {
-                xr = xm;
-                xl = xm;
-            }
+        //เลือกตัดซ้ายหรือขวาจาก f(xm)
+        if (funcal(xm) * funcal(xr) < 0) {
+            xl = xm;
+        } else {
+            xr = xm
         }
-        x_old = xm;
-    } while (check > findErr && n < 100)
-}
-
-
-const findXM = (xl, xr) => {
-    return (parseFloat(xl) + parseFloat(xr)) / 2
+        xmOld = xm;
+    } while (check > findErr)
+    draw(xm);
 }
 
 const funcal = (X) => {
@@ -166,7 +156,7 @@ const cleantable = () => {
     }
 }
 
-const draw = () => {
+const draw = (xm) => {
     try {
         // compile the expression once
         const expression = document.getElementById('inputEqual').value
@@ -188,9 +178,14 @@ const draw = () => {
             y: yValues,
             type: 'scatter'
         };
+        const xmval = {
+            x: xm,
+            y: 0,
+            name: 'xm'
+        };
 
         const data = [trace1]
-        Plotly.newPlot('plot', data, {
+        Plotly.newPlot('plot', data, xmval, {
             responsive: true
         });
 

@@ -1,6 +1,6 @@
 <h1>False position Method</h1>
 
-<body onload="draw(); FPosition();">
+<body onload="draw(); methodFalse();">
     <div class="content">
         <div class="container-fluid">
 
@@ -10,16 +10,16 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="inputEqual">input Equal</label>
-                                <input type="text" class="form-control" id="inputEqual" placeholder="x^3-x-2"
-                                    value="x^3-x-2">
+                                <input type="text" class="form-control" id="inputEqual" placeholder="e^(-x/4)*(2-x)-1"
+                                    value="e^(-x/4)*(2-x)-1">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputXL">Number Start (XL)</label>
-                                <input type="text" class="form-control" id="inputXL" placeholder="1" value="1">
+                                <input type="text" class="form-control" id="inputXL" placeholder="0" value="0">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputXR">Number End (XR)</label>
-                                <input type="text" class="form-control" id="inputXR" placeholder="5" value="5">
+                                <input type="text" class="form-control" id="inputXR" placeholder="1" value="1">
                             </div>
                             <!-- <div class="form-group col-md-4">
                                 <label for="inputPassword4">Error</label>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-block"
-                        onclick="draw(); FPosition();">ENTER</button>
+                        onclick="draw(); methodFalse();">ENTER</button>
                 </div>
             </div>
             <br>
@@ -47,10 +47,10 @@
                         <thead>
                             <tr>
                                 <th scope="col">Iteration</th>
-                                <th scope="col">L</th>
-                                <th scope="col">R</th>
-                                <th scope="col">M</th>
-                                <th scope="col">Error</th>
+                                <th scope="col">XL</th>
+                                <th scope="col">XR</th>
+                                <th scope="col">XM</th>
+                                <th scope="col">Error(%)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,11 +71,11 @@
 
 
 <script>
-const FPosition = () => {
+const methodFalse = () => {
     var table = document.getElementById("outputTable");
     var xl = document.getElementById("inputXL").value;
     var xr = document.getElementById("inputXR").value;
-    var x_old = xr;
+    var xmOld = xr;
     var xm = 0;
     var n = 0;
     var check = parseFloat(0.000000);
@@ -84,16 +84,19 @@ const FPosition = () => {
     }
     do {
         if (xl != xr) {
-            xm = findxm(xl, xr);
-            check = Math.abs(xm - x_old).toFixed(8);
+            xm = (xl * funcal(xr) - xr * funcal(xl)) / (funcal(xr) - funcal(xl))
+            check = Math.abs(xm - xmOld).toFixed(8);
         } else {
-            console.log("do")
             check = 0;
         }
 
-        console.log(check);
-        n++;
         console.log(n);
+
+        if (n > 0) {
+            var errPer = Math.abs(((xm - xmOld) / xm) * 100).toFixed(8)
+            console.log(errPer);
+        }
+        n++;
         // Create an empty <tr> element and add it to the 1st position of the table:
         var row = table.insertRow(n);
 
@@ -113,43 +116,19 @@ const FPosition = () => {
         cell3.setAttribute("id", "cell");
         cell4.innerHTML = xm;
         cell4.setAttribute("id", "cell");
-        cell5.innerHTML = check;
+        cell5.innerHTML = errPer;
         cell5.setAttribute("id", "cell");
 
 
-        if (funcal(xl) < funcal(xr)) {
-            if (funcal(xm) > 0) {
-                xr = xm
-            } else if (funcal(xm) < 0) {
-                xl = xm
-            } else if (funcal(xm) == 0) {
-                xr = xm;
-                xl = xm;
-            }
-        } else if (funcal(xl) > funcal(xr)) {
-            if (funcal(xm) < 0) {
-                xr = xm
-            } else if (funcal(xm) > 0) {
-                xl = xm
-            } else if (funcal(xm) == 0) {
-                xr = xm;
-                xl = xm;
-            }
+        if (funcal(xm) * funcal(xr) < 0) {
+            xl = xm;
+        } else {
+            xr = xm
         }
-        if (parseFloat(xl) > parseFloat(xr)) {
-            var temp = xr;
-            xr = xl;
-            xl = temp;
-        }
-        x_old = xm
+        xmOld = xm
     } while (check > 0.00001 && n < 100)
 }
 
-
-//คำนวนหา Xm
-const findxm = (xl, xr) => {
-    return (xl * funcal(xr) - xr * funcal(xl)) / (funcal(xr) - funcal(xl));
-}
 
 // แก้สมาการ X
 const funcal = (X) => {

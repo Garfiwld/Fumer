@@ -97,7 +97,6 @@ const getdata = () => {
             }
         }
     }
-    //call หลังจากได้ข้อมูล
     LU_Decomposition(a, b);
 }
 
@@ -110,7 +109,15 @@ const LU_Decomposition = (a, b) => {
         cleantable();
     }
 
+    // const m = [[2, 1], [1, 4]]
+    // const r = math.lup(m)
+    // r = {
+    //   L: [[1, 0], [0.5, 1]],
+    //   U: [[2, 1], [0, 3.5]],
+    //   P: [0, 1]
+    // }
     var LU = math.lup(a);
+    // returns column vector with the solution to the linear system A * x = b, lup = math.lup(A)
     var result = math.lusolve(LU, b);
 
     var num = 1;

@@ -22,7 +22,7 @@
                                 <input type="text" class="form-control" id="text3" placeholder="5" value="5">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text4">input oder Differential</label>
+                                <label for="text4">INPUT ODER DIFFERENTIAL (MAX4)</label>
                                 <input type="text" class="form-control" id="text4" placeholder="5" value="5">
                             </div>
                         </div>

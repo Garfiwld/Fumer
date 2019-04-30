@@ -9,8 +9,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="inputEqual">INPUT EQUAL</label>
-                                <input type="text" class="form-control" id="inputEqual" placeholder="x^3-x-2"
-                                    value="x^3-x-2">
+                                <input type="text" class="form-control" id="inputEqual" placeholder="sin(x)-x^2"
+                                    value="sin(x)-x^2">
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputX">INITIAL NUMBER (X)</label>
@@ -38,7 +38,7 @@
                             <tr>
                                 <th scope="col">Iteration</th>
                                 <th scope="col">X</th>
-                                <th scope="col">|xi-xi-1|</th>
+                                <th scope="col">Error(%)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,22 +64,23 @@ const NewRaphson = () => {
     var table = document.getElementById("output");
     var expression = document.getElementById("inputEqual").value;
     var expression2 = math.derivative(expression, 'x');
-    //var expression3 = "("+expression+")+"+"(x-"+x+")*("+math.derivative(expression, 'x')+")"; //หา derivative
     var x = 0;
-    var x_old = document.getElementById("inputX").value;
+    var xOld = document.getElementById("inputX").value;
     var n = 0;
     var check = parseFloat(0.00000000);
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
-    console.log(expression2.toString());
     do {
+
+        x = xOld - (funcal(xOld, expression) / funcal(xOld, expression2.toString()));
+        check = Math.abs(x - xOld).toFixed(8);
+        if (n > 0) {
+            var errPer = Math.abs(((x - xOld) / x) * 100).toFixed(8)
+            console.log(errPer);
+        }
         n++;
 
-        x = x_old - (funcal(x_old, expression) / funcal(x_old, expression2.toString()));
-        check = Math.abs(x - x_old).toFixed(8);
-        console.log(check);
-        console.log(n);
         // Create an empty <tr> element and add it to the 1st position of the table:
         var row = table.insertRow(n);
 
@@ -96,9 +97,9 @@ const NewRaphson = () => {
 
         cell1.innerHTML = n;
         cell2.innerHTML = x;
-        cell3.innerHTML = check;
+        cell3.innerHTML = errPer;
 
-        x_old = x;
+        xOld = x;
     } while (check > 0.00001 && n < 100)
 }
 

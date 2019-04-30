@@ -181,27 +181,6 @@ const cleantable = () => {
 //การวาดที่จะไปใส่ใน plot
 const draw = (x, y, realy, x2) => {
     try {
-        /*// compile the expression once
-        const expression = document.getElementById('text1').value
-        const expr = math.compile(expression)
-
-        // evaluate the expression repeatedly for different values of x
-        const xValues = math.range(-10, 10, 0.5).toArray()
-        const yValues = xValues.map(function (x) {
-        	return expr.eval({x: x})
-        })
-
-        // render the plot using plotly
-        const trace1 = {
-        	x: xValues,
-        	y: yValues,
-        	type: 'scatter'
-        }
-        const trace2 = {
-        	x: xValues,
-        	y: yValues,
-        	type: 'scatter'
-        }*/
         const data = [{
             x: x2,
             y: realy,
@@ -216,9 +195,6 @@ const draw = (x, y, realy, x2) => {
                 t: 0
             }
         });
-
-        /*const data = [trace1,trace2]
-        Plotly.newPlot('plot', data)*/
     } catch (err) {
         console.error(err)
         alert(err)
