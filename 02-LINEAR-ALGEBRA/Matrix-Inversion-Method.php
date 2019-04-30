@@ -26,7 +26,7 @@
                 </div>
             </div>
             <br>
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-body">
                     <h5>output (Result)</h5>
                     <table id="output" class="table table-bordered">
@@ -45,7 +45,7 @@
                     </table>
                 </div>
             </div>
-            <br>
+            <br> -->
             <div class="card">
                 <div class="card-body">
                     <h5>output (Inversion Metrix)</h5>
@@ -65,15 +65,17 @@ const getdata = () => {
     var arr = [];
     for (i = 0; i < n; i++) {
         arr.push([]);
-        for (j = 0; j <= n; j++) {
+        // for (j = 0; j <= n; j++) {
+        for (j = 0; j < n; j++) {
             arr[i].push(document.getElementById(i + "|" + j).value);
         }
     }
     var a = [];
-    var b = [];
+    // var b = [];
     for (i = 0; i < n; i++) {
         a.push([]);
-        for (j = 0; j <= n; j++) {
+        // for (j = 0; j <= n; j++) {
+        for (j = 0; j < n; j++) {
             if (j < n) {
                 a[i].push(arr[i][j]);
             } else {
@@ -81,25 +83,29 @@ const getdata = () => {
             }
         }
     }
-    a = [
-        [1, 2, 7],
-        [1, 5, 6],
-        [2, 5, 6]
-    ]
-    b = [5, 10, 20]
-    Matrix_Inversion(a, b);
+    // a = [
+    //     [4, -4, 0],
+    //     [-1, 4, -2],
+    //     [0, -2, 4]
+    // ]
+    console.log(math.inv(a));
+
+    // b = [5, 10, 20]
+    // Matrix_Inversion(a, b);
+    Matrix_Inversion(a);
 }
 
-const Matrix_Inversion = (a, b) => {
+// const Matrix_Inversion = (a, b) => {
+const Matrix_Inversion = (a) => {
     var n = a.length;
     var m = parseInt(n) + 1;
-    var table = document.getElementById("output");
+    // var table = document.getElementById("output");
     var table2 = document.getElementById("outputInv");
-    if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
+    if (document.getElementById("outputInv").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
 
-    var MInv = math.inv(a);
+    var matrixInv = math.inv(a);
 
 
     for (i = 0; i < n; i++) {
@@ -107,19 +113,19 @@ const Matrix_Inversion = (a, b) => {
         for (j = 0; j < n; j++) {
             var cell = row.insertCell(j);
             cell.setAttribute("id", "celloutput");
-            cell.innerHTML = MInv[i][j].toFixed(5);
+            cell.innerHTML = matrixInv[i][j];
         }
     }
-    var result = math.multiply(MInv, b);
-    var num = 1;
-    for (i = 0; i < n; i++) {
-        var row = table.insertRow(num);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = "X|" + num + ":    ";
-        cell2.innerHTML = result[i];
-        num++;
-    }
+    // var result = math.multiply(matrixInv, b);
+    // var num = 1;
+    // for (i = 0; i < n; i++) {
+    //     var row = table.insertRow(num);
+    //     var cell1 = row.insertCell(0);
+    //     var cell2 = row.insertCell(1);
+    //     cell1.innerHTML = "X|" + num + ":    ";
+    //     cell2.innerHTML = result[i];
+    //     num++;
+    // }
 }
 
 //ลบ table
@@ -128,10 +134,10 @@ const cleantable = () => {
     for (j = 0; j < count; j++) {
         document.getElementById("outputInv").deleteRow(0);
     }
-    var count = document.getElementById("output").getElementsByTagName("tr").length;
-    for (j = 1; j < count; j++) {
-        document.getElementById("output").deleteRow(1);
-    }
+    // var count = document.getElementById("output").getElementsByTagName("tr").length;
+    // for (j = 1; j < count; j++) {
+    //     document.getElementById("output").deleteRow(1);
+    // }
 }
 
 const CreateTable = (n) => {
@@ -141,22 +147,24 @@ const CreateTable = (n) => {
     }
 
     var row = table.insertRow(0);
+    // for (i = 0; i <= n; i++) {
     for (i = 0; i <= n; i++) {
         if (i == 0) {
             var cell = row.insertCell(i);
             cell.innerHTML = "";
         } else {
-            if (i == parseInt(n)) {
-                var cell = row.insertCell(i);
-                cell.innerHTML = "Y";
-            }
+            // if (i == parseInt(n)) {
+            //     var cell = row.insertCell(i);
+            //     cell.innerHTML = "Y";
+            // }
             var cell = row.insertCell(i);
             cell.innerHTML = "X" + parseInt(i - 1);
         }
     }
     for (i = 1; i <= n; i++) {
         var row = table.insertRow(i);
-        for (j = 0; j <= parseInt(n) + 1; j++) {
+        // for (j = 0; j <= parseInt(n) + 1; j++) {
+        for (j = 0; j < parseInt(n) + 1; j++) {
             if (j == 0) {
                 var cell = row.insertCell(j);
                 cell.innerHTML = "a" + parseInt(i);

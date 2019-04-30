@@ -97,6 +97,12 @@ const getdata = () => {
             }
         }
     }
+    a = [
+        [2, 3, 4],
+        [4, 10, 9],
+        [6, 17, 20]
+    ];
+    b = [23, 59, 101]
     LU_Decomposition(a, b);
 }
 
@@ -125,7 +131,7 @@ const LU_Decomposition = (a, b) => {
         var row = table.insertRow(num);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
-        cell1.innerHTML = "X|" + num + ":    ";
+        cell1.innerHTML = num;
         cell2.innerHTML = result['_data'][i];
         num++;
     }

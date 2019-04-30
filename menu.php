@@ -31,9 +31,9 @@
                 <a href="#matirxSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">LINEAR
                     ALGEBRA</a>
                 <ul class="collapse list-unstyled" id="matirxSubmenu">
-                    <!-- <li>
+                    <li>
                         <a href="index.php?page=Cramer-s-Rule">Cramer's Rule</a>
-                    </li> -->
+                    </li>
                     <li>
                         <a href="index.php?page=Gauss-Elimination-Method">Gauss Elimination Method</a>
                     </li>
@@ -231,9 +231,9 @@
                 include("01-ROOT-OF-EQUATION\One-point-iteration-Method.php");
                 break;
             //02-LINEAR-ALGEBRA
-            // case "Cramer-s-Rule":
-            //     include("02-LINEAR-ALGEBRA\Cramer-s-Rule.php");
-            //     break;
+            case "Cramer-s-Rule":
+                include("02-LINEAR-ALGEBRA\Cramer-s-Rule.php");
+                break;
             case "Gauss-Elimination-Method":
                 include("02-LINEAR-ALGEBRA\Gauss-Elimination-Method.php");
                 break;

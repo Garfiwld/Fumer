@@ -112,7 +112,11 @@ const getdata = () => {
             arr[i].push(document.getElementById(i + "|" + j).value);
         }
     }
-    // Gauss หลังจากได้ข้อมูล
+    arr = [
+        [4, -4, 0, 400],
+        [-1, 4, -2, 400],
+        [0, -2, 4, 400]
+    ]
     Gauss_Jordan(arr);
 }
 
@@ -123,38 +127,72 @@ const Gauss_Jordan = (arr) => {
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
-    //ทำลง
-    for (i = 0; i < (n - 1); i++) {
+
+    // arr = [
+    //     [x, x, x],
+    //     [0, x, x],
+    //     [0, 0, x]
+    // ]
+    for (i = 0; i < n - 1; i++) {
         for (j = i; j < n - 1; j++) {
             var temp = arr[i][i];
-            var temp2 = arr[parseInt(j) + 1][i];
+            // console.log("[" + i + i + "] = " + temp);
+            var temp2 = arr[j + 1][i];
+            // console.log("[" + (j + 1) + i + "] = " + temp2);
             for (k = i; k < m; k++) {
-                if (isFinite(arr[j][k] / temp * temp2)) {
-                    arr[parseInt(j) + 1][k] = arr[parseInt(j) + 1][k] - (arr[i][k] / temp * temp2);
-                }
+                // if (isFinite(arr[j][k] / temp * temp2)) {
+
+                // (R2)(ทุกตัว) - (R1) * (arr[0][1] / arr[0][0])
+                // console.log(arr[j + 1][k] + " - " + arr[i][k] + " * " + temp2 *
+                //     temp);
+                // arr[j + 1][k] = arr[j + 1][k] - (arr[i][k] / temp *
+                //     temp2);
+                arr[j + 1][k] = arr[j + 1][k] - (arr[i][k] * (temp2 / temp));
+                // }
+
+                // console.log("[" + (j + 1) + k + "] = " + arr[j + 1][k]);
             }
         }
     }
-    // หาคำตอบ
-    for (i = (n - 1); i > 0; i--) {
+
+    // arr = [
+    //     [x1, 0, 0],
+    //     [0, x2, 0],
+    //     [0, 0, x3]
+    // ]
+    for (i = n - 1; i > 0; i--) {
         for (j = i; j > 0; j--) {
+            // console.log("[*1] " + i + " " + j);
             var temp = arr[i][i];
             var temp2 = arr[j - 1][i];
-            console.log("do");
-            //ทำแค่ขวาสุด
-            arr[parseInt(j) - 1][n] = arr[parseInt(j) - 1][n] - (arr[i][n] / temp * temp2)
-            for (k = i; k >= 0; k--) {
-                arr[parseInt(j) - 1][k] = arr[parseInt(j) - 1][k] - (arr[i][k] / temp * temp2);
+            // หาค่า Y2,Y1
+            console.log(arr[j - 1][n] + " - (" + arr[i][n] + " * " + temp2 + " / " + temp);
+            arr[j - 1][n] = arr[j - 1][n] - (arr[i][n] * (temp2 / temp))
+            console.log("*[" + (j - 1) + n + "] = " + arr[j - 1][n]);
+
+            // อัพเดท x2 x1
+            for (k = i; k > 0; k--) {
+                console.log(arr[j - 1][k] + " - " + arr[i][k] + " / " + (temp2 / temp));
+                arr[j - 1][k] = arr[j - 1][k] - (arr[i][k] * (temp2 / temp));
+                console.log("[" + (j - 1) + k + "] = " + arr[j - 1][k]);
             }
         }
     }
+    // arr = [
+    //     [1, 0, 0],
+    //     [0, 1, 0],
+    //     [0, 0, 1]
+    // ]
     var result = [];
+    // เหมือนทำ สปส. แนวทะแยงหลักให้เป็น 1 (Y/x3 x2 x1)
     for (i = n - 1; i >= 0; i--) {
         if (isFinite(arr[i][n] / arr[i][i])) {
             result.push(arr[i][n] / arr[i][i]);
         } else {
             result.push(0);
         }
+        console.log(arr[i][n] + " / " + arr[i][i]);
+
     }
     var num = 1;
     for (i = n - 1; i >= 0; i--) {

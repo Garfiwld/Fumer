@@ -1,17 +1,17 @@
-<body onload="CreateTable(text1.value);">
+<body onload="CreateTable(inputN.value);">
     <h1>Gauss Elimination</h1>
     <div class="content">
         <div class="container-fluid">
 
             <div class="card">
                 <div class="card-body">
-                    <label for="text1">input 'n' Create table input</label>
-                    <input type="text" class="form-control" id="text1" placeholder="3" name="text" placeholder="x^3-x-2"
-                        value="3" required>
+                    <label for="inputN">input 'n' Create table input</label>
+                    <input type="text" class="form-control" id="inputN" placeholder="3" name="text"
+                        placeholder="x^3-x-2" value="3" required>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(text1.value)">ENTER</button>
+                        onclick="CreateTable(inputN.value)">ENTER</button>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
 
 <script>
 const getdata = () => {
-    n = document.getElementById("text1").value;
+    n = document.getElementById("inputN").value;
     var arr = [];
     for (i = 0; i < n; i++) {
         arr.push([]);
@@ -65,9 +65,9 @@ const getdata = () => {
         }
     }
     arr = [
-        [2, 1, 1, 4],
-        [1, -1, 2, 2],
-        [2, 2, -1, 3]
+        [2, 1, -3, -1],
+        [-1, 3, 2, 12],
+        [3, 1, -3, 0]
     ];
     Gauss_Elimination(arr);
 }
@@ -79,35 +79,53 @@ const Gauss_Elimination = (arr) => {
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
-    //ทำลง
-    for (i = 0; i < (n - 1); i++) {
+    // arr = [
+    //     [x, x, x],
+    //     [0, x, x],
+    //     [0, 0, x]
+    // ]
+    for (i = 0; i < n - 1; i++) {
         for (j = i; j < n - 1; j++) {
             var temp = arr[i][i];
-            var temp2 = arr[parseInt(j) + 1][i];
+            // console.log("[" + i + i + "] = " + temp);
+            var temp2 = arr[j + 1][i];
+            // console.log("[" + (j + 1) + i + "] = " + temp2);
             for (k = i; k < m; k++) {
-                if (isFinite(arr[j][k] / temp * temp2)) {
-                    arr[parseInt(j) + 1][k] = arr[parseInt(j) + 1][k] - (arr[i][k] / temp *
-                        temp2);
-                }
+                // if (isFinite(arr[j][k] / temp * temp2)) {
+
+                // (R2)(ทุกตัว) - (R1) * (arr[0][1] / arr[0][0])
+                // console.log(arr[j + 1][k] + " - " + arr[i][k] + " * " + temp2 *
+                //     temp);
+                // arr[j + 1][k] = arr[j + 1][k] - (arr[i][k] / temp *
+                //     temp2);
+                arr[j + 1][k] = arr[j + 1][k] - (arr[i][k] * (temp2 / temp));
+                // }
+
+                // console.log("[" + (j + 1) + k + "] = " + arr[j + 1][k]);
             }
         }
     }
-    // หาคำตอบ
+    // แทนค่าย้อนกลับ
     var result = [];
     for (i = n - 1; i >= 0; i--) {
-        //ย้ายข้างไปลบ
+        // เอา 12 02 01 ไป ลบ y เคสหา x3 ไม่เข้า
         for (j = n - 1; j > i; j--) {
+            console.log("[" + i + n + "] = " + arr[i][n] + " - " + "[" + i + j + "] = " + arr[i][j]);
             arr[i][n] = arr[i][n] - arr[i][j];
+            console.log("[" + i + n + "] = " + arr[i][n]);
         }
-        //ย้ายไปหาร
+        // หาค่า x3 x2 x1
         if (isFinite(arr[i][n] / arr[i][i])) {
+            //
             result.push(arr[i][n] / arr[i][i]);
         } else {
             result.push(0);
         }
+        // console.log("[2] " + arr[i][n] / arr[i][i]);
         for (j = i - 1; j >= 0; j--) {
-            //เอาคำตอบไปคูณ
+            // เอาค่า x3 กลับขึ้นไปคูณ R2
             arr[j][i] = result[parseInt(n) - 1 - parseInt(i)] * arr[j][i];
+            // console.log("[3] " + i + " " + j + " " + arr[i][n]);
         }
     }
 
@@ -119,7 +137,7 @@ const Gauss_Elimination = (arr) => {
         var cell2 = row.insertCell(1);
         cell1.setAttribute("id", "cell");
         cell2.setAttribute("id", "cell");
-        cell1.innerHTML = "X | " + num + ":    ";
+        cell1.innerHTML = num;
         cell2.innerHTML = result[i];
         num++;
     }
@@ -135,7 +153,6 @@ const cleantable = () => {
 
 const CreateTable = (n) => {
     var table = document.getElementById("InputTable");
-    console.log(document.getElementById("InputTable").getElementsByTagName("tr").length)
     if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
         cleantableinput();
     }
