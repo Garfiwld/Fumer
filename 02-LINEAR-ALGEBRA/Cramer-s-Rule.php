@@ -4,19 +4,18 @@
     <script src="https://embed.planetcalc.com/widget.js?v=3342"></script>
 </div> -->
 
-<body onload="CreateTable(inputN.value);">
+<body onload="CreateTable(inputN.value);getdata();">
     <div class="content">
         <div class="container-fluid">
 
             <div class="card">
                 <div class="card-body">
                     <label for="inputN">input 'n' Create table input</label>
-                    <input type="text" class="form-control" id="inputN" placeholder="3" name="text"
-                        placeholder="x^3-x-2" value="3" required>
+                    <input type="text" class="form-control" id="inputN" placeholder="3" value="3" required>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(inputN.value)">ENTER</button>
+                        onclick="CreateTable(inputN.value);getdata();">ENTER</button>
                 </div>
             </div>
 
@@ -151,6 +150,7 @@ const CreateTable = (n) => {
                 x.setAttribute("type", "text");
                 x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
                 x.setAttribute("class", "form-control");
+                x.setAttribute("value", math.randomInt(100));
                 cell.appendChild(x);
             }
         }

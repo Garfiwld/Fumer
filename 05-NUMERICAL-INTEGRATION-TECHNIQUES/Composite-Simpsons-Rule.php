@@ -1,6 +1,6 @@
 <h1>Composite Simpson's Rule</h1>
 
-<body onload="draw(); Composite_Simpson();">
+<body onload="Composite_Simpson();">
     <div class="content">
         <div class="container-fluid">
 
@@ -22,7 +22,7 @@
                                 <input type="text" class="form-control" id="inputXEnd" placeholder="1" value="5">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputN">input N split</label>
+                                <label for="inputN">input f(xn) split</label>
                                 <input type="text" class="form-control" id="inputN" placeholder="4" value="10">
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-block"
-                        onclick=" draw(); Composite_Simpson();">ENTER</button>
+                        onclick="Composite_Simpson();">ENTER</button>
                 </div>
             </div>
             <br>
@@ -59,7 +59,7 @@
 
 
 <script>
-const Composite_Trapezoidal = () => {
+const Composite_Simpson = () => {
     var table = document.getElementById("output");
     var expression = document.getElementById("inputEqual").value;
     var xstart = document.getElementById("inputXStart").value;
@@ -74,12 +74,15 @@ const Composite_Trapezoidal = () => {
 
     var temp = h / 2;
     var temp2 = 0;
+    var temp3 = 0;
     var tempy = 0;
+    var tempn = 1;
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
     var h = Math.abs((xstart - xend) / n);
     var currentx = xstart;
+
 
     tempy = funcal(currentx, expression);
     var result = tempy;
@@ -88,15 +91,25 @@ const Composite_Trapezoidal = () => {
     currentx = currentx + h;
 
     for (i = 0; i < n - 1; i++) {
-        tempy = funcal(currentx, expression);
-        temp2 = temp2 + tempy;
-        arrayx.push(currentx);
-        arrayy.push(tempy);
-        currentx = currentx + h;
+        if (tempn % 2 == 0) {
+            tempy = funcal(currentx, expression);
+            temp3 = temp3 + tempy;
+            arrayx.push(currentx);
+            arrayy.push(tempy);
+            currentx = currentx + h;
+        } else {
+            tempy = funcal(currentx, expression);
+            temp2 = temp2 + tempy;
+            arrayx.push(currentx);
+            arrayy.push(tempy);
+            currentx = currentx + h;
+        }
+        tempn++;
     }
+
     tempy = funcal(currentx, expression);
-    result = result + tempy + temp2 * 2;
-    result = result * (h / 2)
+    result = result + tempy + temp2 * 4 + temp3 * 2;
+    result = result * (h / 3)
     arrayx.push(currentx);
     arrayy.push(tempy);
 
@@ -115,7 +128,6 @@ const Composite_Trapezoidal = () => {
     cell1.innerHTML = result;
     cell2.innerHTML = realarea;
     cell3.innerHTML = error;
-
 
 }
 
@@ -152,6 +164,7 @@ const cleantable = () => {
     }
 }
 
+//การวาดที่จะไปใส่ใน plot
 const draw = (x, y) => {
     try {
         const data = [{
@@ -163,6 +176,7 @@ const draw = (x, y) => {
                 t: 0
             }
         });
+
     } catch (err) {
         console.error(err)
         alert(err)

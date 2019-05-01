@@ -1,7 +1,7 @@
 <h1>Gauss-Seidel Method</h1>
 
 
-<body onload="CreateTable(text1.value);">
+<body onload="CreateTable(text1.value);getdata();">
     <div class="content">
         <div class="container-fluid">
 
@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(text1.value)">ENTER</button>
+                        onclick="CreateTable(text1.value);getdata()">ENTER</button>
                 </div>
             </div>
             <br>
@@ -100,14 +100,14 @@ const getdata = () => {
     // ];
     // b = [54, 72, 110]
     // x[0, 0, 0]
-    a = [
-        [10, 1, 2, 0],
-        [-1, 11, -1, 3],
-        [2, -1, 10, -1],
-        [0, 3, -1, 8]
-    ];
-    b = [6, 25, -11, 15];
-    x = [0, 0, 0, 0];
+    // a = [
+    //     [10, 1, 2, 0],
+    //     [-1, 11, -1, 3],
+    //     [2, -1, 10, -1],
+    //     [0, 3, -1, 8]
+    // ];
+    // b = [6, 25, -11, 15];
+    // x = [0, 0, 0, 0];
     Gauss_Seidel_Iteration(a, b, x);
 }
 
@@ -170,11 +170,6 @@ const Gauss_Seidel_Iteration = (a, b, x) => {
 
         xOld = x.slice();
 
-        //รอบแรก
-        // if (Iteration == 1) {
-        //     checkErr = true;
-        // }
-        //เพิ่มตราง
         row = table2.insertRow(Iteration);
         for (i = 0; i < parseInt(n) * 2 + 1; i++) {
             if (i == 0) {
@@ -255,6 +250,7 @@ const CreateTable = (n) => {
                 x.setAttribute("type", "text");
                 x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
                 x.setAttribute("class", "form-control");
+                x.setAttribute("value", math.randomInt(100));
                 cell.appendChild(x);
             }
         }

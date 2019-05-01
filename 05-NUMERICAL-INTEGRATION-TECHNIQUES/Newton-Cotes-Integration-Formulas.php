@@ -19,6 +19,7 @@
                                     <option value="2">SIMPSON</option>
                                     <option value="3">SIMPSON 3/8</option>
                                     <option value="4">BOOLE</option>
+                                    <option value="5">NCOTES</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
@@ -35,7 +36,7 @@
                                 <input type="text" class="form-control" id="xEnd" placeholder="1" value="5" required>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputN">INPUT N SPLIT</label>
+                                <label for="inputN">INPUT f(xn) SPLIT</label>
                                 <input type="text" class="form-control" id="inputN" placeholder="4" value="10" required>
                             </div>
                         </div>
@@ -109,8 +110,12 @@ const Newton_Cotes = () => {
         } else if (n == 4) {
             result = result + boole(currentx, currentx + range, expression);
             currentx = currentx + range;
+        } else if (n == 5) {
+            result = result + Ncotes(currentx, currentx + range, expression);
+            currentx = currentx + range;
         }
     }
+
 
     arrayx.push(currentx);
     arrayy.push(funcal(currentx, expression));

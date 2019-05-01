@@ -60,48 +60,6 @@
 
 
 <script>
-// สร้างตาราง
-const CreateTable = (n) => {
-    var table = document.getElementById("InputTable");
-    if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
-        cleantableinput();
-    }
-
-    var row = table.insertRow(0);
-    for (i = 0; i <= n; i++) {
-        if (i == 0) {
-            var cell = row.insertCell(i);
-            cell.innerHTML = "";
-        } else {
-            if (i == parseInt(n)) {
-                var cell = row.insertCell(i);
-                cell.innerHTML = "Y";
-            }
-            var cell = row.insertCell(i);
-            cell.innerHTML = "X" + parseInt(i - 1);
-        }
-    }
-    for (i = 1; i <= n; i++) {
-        var row = table.insertRow(i);
-        for (j = 0; j <= parseInt(n) + 1; j++) {
-            if (j == 0) {
-                var cell = row.insertCell(j);
-                cell.innerHTML = "a" + parseInt(i);
-            } else {
-                var cell = row.insertCell(j);
-                var x = document.createElement("INPUT");
-                x.setAttribute("type", "text");
-                x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
-                x.setAttribute("class", "form-control");
-                cell.appendChild(x);
-            }
-        }
-    }
-
-}
-
-
-
 //รับข้อมูลที่กรอกแล้ว
 const getdata = () => {
     n = document.getElementById("text1").value;
@@ -145,8 +103,6 @@ const Gauss_Jordan = (arr) => {
                 // (R2)(ทุกตัว) - (R1) * (arr[0][1] / arr[0][0])
                 // console.log(arr[j + 1][k] + " - " + arr[i][k] + " * " + temp2 *
                 //     temp);
-                // arr[j + 1][k] = arr[j + 1][k] - (arr[i][k] / temp *
-                //     temp2);
                 arr[j + 1][k] = arr[j + 1][k] - (arr[i][k] * (temp2 / temp));
                 // }
 
@@ -201,7 +157,7 @@ const Gauss_Jordan = (arr) => {
         var cell2 = row.insertCell(1);
         cell1.setAttribute("id", "cell");
         cell2.setAttribute("id", "cell");
-        cell1.innerHTML = "X|" + num + ":    ";
+        cell1.innerHTML = num;
         cell2.innerHTML = result[i];
         num++;
     }
@@ -216,6 +172,46 @@ const cleantable = () => {
 }
 
 
+// สร้างตาราง
+const CreateTable = (n) => {
+    var table = document.getElementById("InputTable");
+    if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
+        cleantableinput();
+    }
+
+    var row = table.insertRow(0);
+    for (i = 0; i <= n; i++) {
+        if (i == 0) {
+            var cell = row.insertCell(i);
+            cell.innerHTML = "";
+        } else {
+            if (i == parseInt(n)) {
+                var cell = row.insertCell(i);
+                cell.innerHTML = "Y";
+            }
+            var cell = row.insertCell(i);
+            cell.innerHTML = "X" + parseInt(i - 1);
+        }
+    }
+    for (i = 1; i <= n; i++) {
+        var row = table.insertRow(i);
+        for (j = 0; j <= parseInt(n) + 1; j++) {
+            if (j == 0) {
+                var cell = row.insertCell(j);
+                cell.innerHTML = "a" + parseInt(i);
+            } else {
+                var cell = row.insertCell(j);
+                var x = document.createElement("INPUT");
+                x.setAttribute("type", "text");
+                x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
+                x.setAttribute("class", "form-control");
+                x.setAttribute("value", math.randomInt(100));
+                cell.appendChild(x);
+            }
+        }
+    }
+
+}
 const cleantableinput = () => {
     var table = document.getElementById("InputTable");
     table.innerHTML = "";

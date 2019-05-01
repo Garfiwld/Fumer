@@ -1,6 +1,6 @@
 <h1>Bisection Method</h1>
 
-<body onload=" draw(); checkInput();">
+<body>
     <div class="content">
         <div class="container-fluid">
 
@@ -31,7 +31,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-lg btn-block"
-                        onclick=" draw(); checkInput();">ENTER</button>
+                        onclick="checkInput();">ENTER</button>
                 </div>
             </div>
             <br>
@@ -136,7 +136,7 @@ const bisection = () => {
         }
         xmOld = xm;
     } while (check > findErr)
-    draw(xm);
+    afDraw(xm);
 }
 
 const funcal = (X) => {
@@ -156,36 +156,49 @@ const cleantable = () => {
     }
 }
 
-const draw = (xm) => {
-    try {
-        // compile the expression once
-        const expression = document.getElementById('inputEqual').value
 
-        const expr = math.compile(expression)
+const afDraw = (xm) => {
 
-        // evaluate the expression repeatedly for different values of x
-        const xValues = math.range(-10, 10, 0.5).toArray()
-        const yValues = xValues.map(function(x) {
-            return expr.eval({
-                x: x
-            })
+    // compile the expression once
+    const expression = document.getElementById('inputEqual').value
+
+    const expr = math.compile(expression)
+
+    // evaluate the expression repeatedly for different values of x
+    const xValues = math.range(-10, 10, 0.5).toArray()
+    const yValues = xValues.map(function(x) {
+        return expr.eval({
+            x: x
         })
+    })
+    draw(xValues, yValues, xm);
+}
+
+const draw = (xValues, yValues, xm) => {
+    try {
+        console.log(xValues + " " + yValues + " " + xm);
 
 
         // render the plot using plotly
-        const trace1 = {
+        const fx = {
             x: xValues,
             y: yValues,
+            name: 'F(x)',
             type: 'scatter'
         };
-        const xmval = {
-            x: xm,
-            y: 0,
-            name: 'xm'
+        var trace2 = {
+            x: [xm],
+            y: [0],
+            mode: 'markers',
+            type: 'scatter',
+            name: 'ROOT',
+            text: ['XM'],
+            marker: {
+                size: 12
+            }
         };
-
-        const data = [trace1]
-        Plotly.newPlot('plot', data, xmval, {
+        const data = [fx, trace2]
+        Plotly.newPlot('plot', data, {
             responsive: true
         });
 

@@ -1,6 +1,6 @@
 <h1>Heun's method</h1>
 
-<body onload="Heun(); draw();">
+<body onload="Heun();">
     <div class="content">
         <div class="container-fluid">
 
@@ -9,36 +9,36 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="text1">input Equal</label>
-                                <input type="text" class="form-control" id="text1" placeholder="x^3-x-2"
-                                    value="x^3-x-2">
+                                <label for="inputEqual">input Equal</label>
+                                <input type="text" class="form-control" id="inputEqual" placeholder="4x-2y/x"
+                                    value="4x-2y/x">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text2">Start X</label>
-                                <input type="text" class="form-control" id="text2" placeholder="1" value="1">
+                                <label for="inputXStart">Start X</label>
+                                <input type="text" class="form-control" id="inputXStart" placeholder="1" value="1">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text3">End X</label>
-                                <input type="text" class="form-control" id="text3" placeholder="5" value="5">
+                                <label for="inputXEnd">End X</label>
+                                <input type="text" class="form-control" id="inputXEnd" placeholder="2" value="2">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text4">Y(0)</label>
-                                <input type="text" class="form-control" id="text4" placeholder="5" value="5">
+                                <label for="inputY">Y(0)</label>
+                                <input type="text" class="form-control" id="inputY" placeholder="1" value="1">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text5">H</label>
-                                <input type="text" class="form-control" id="text5" placeholder="5" value="5">
+                                <label for="inputH">H</label>
+                                <input type="text" class="form-control" id="inputH" placeholder="0.25" value="0.25">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text6">input Real Equal</label>
-                                <input type="text" class="form-control" id="text6" placeholder="5" value="5">
+                                <label for="inputRealEqual">input Real Equal</label>
+                                <input type="text" class="form-control" id="inputRealEqual" placeholder="x^2"
+                                    value="x^2">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-lg btn-block"
-                        onclick="Heun(); draw(); ">ENTER</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="Heun();">ENTER</button>
                 </div>
             </div>
             <br>
@@ -50,19 +50,19 @@
             <br>
             <div class="card">
                 <div class="card-header">
-                    <h1 class="h2" style="margin-top:10px">output</h1>
-                    <table id="output" style="padding: 0px 8px;" class="table table-hover">
+                    <h5>output</h5>
+                    <table id="output" class="table table-bordered">
                         <tr style="text-align: center;">
-                            <th width="20%">Currentx</th>
-                            <th width="30%">Y</th>
-                            <th width="30%">realY</th>
-                            <th width="30%">error</th>
+                            <th>Currentx</th>
+                            <th>Y</th>
+                            <th>realY</th>
+                            <th>error</th>
                         </tr>
                         <tr class="list-data">
-                            <td width="20%" id="Currentx" style="text-align: center;"></td>
-                            <td width="30%" id="Y"></td>
-                            <td width="30%" id="realY"></td>
-                            <td width="30%" id="error"></td>
+                            <td id="Currentx" style="text-align: center;"></td>
+                            <td id="Y"></td>
+                            <td id="realY"></td>
+                            <td id="error"></td>
                         </tr>
                     </table>
                 </div>
@@ -75,13 +75,13 @@
 <script>
 const Heun = () => {
     var table = document.getElementById("output");
-    var expression = document.getElementById("text1").value;
-    var startx = document.getElementById("text2").value;
-    var endx = document.getElementById("text3").value;
-    var y = document.getElementById("text4").value;
-    var h = document.getElementById("text5").value;
+    var expression = document.getElementById("inputEqual").value;
+    var xStart = document.getElementById("inputXStart").value;
+    var xEnd = document.getElementById("inputXEnd").value;
+    var y = document.getElementById("inputY").value;
+    var h = document.getElementById("inputH").value;
     var y0 = 0;
-    var rexpression = document.getElementById("text6").value;
+    var expressionReal = document.getElementById("inputRealEqual").value;
 
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
         cleantable();
@@ -90,37 +90,41 @@ const Heun = () => {
     var error = 0;
     y = parseFloat(y);
     h = parseFloat(h);
-    startx = parseFloat(startx);
-    var currentx = startx;
-    var realy, check = 0,
+    xStart = parseFloat(xStart);
+    var currentXStart = xStart;
+    var fxReal, check = 0,
         n = 0;
     var arrayX = [],
         arrayY = [],
         arrayRY = [],
         arrayX2 = [];
 
-    arrayX.push(currentx);
+    arrayX.push(currentXStart);
     arrayY.push(y);
+    
+    fxReal = funcal(currentXStart, expressionReal);
+    arrayX2.push(currentXStart);
+    arrayRY.push(fxReal);
 
-    realy = funcal(currentx, rexpression);
-    arrayX2.push(currentx);
-    arrayRY.push(realy);
-
-    while (currentx <= endx) {
+    while (currentXStart <= xEnd) {
         n++;
 
-
-        y0 = y + funcalXY(currentx, y, expression) * h;
-        y = y + ((funcalXY(currentx, y, expression) + funcalXY(currentx + h, y0, expression)) / 2) * h
-        realy = funcal(currentx + h, rexpression);
-        console.log(currentx);
+        //  H
+        y0 = y + funcalXY(currentXStart, y, expression) * h;
+        // ตัวแก้
+        // + H เก่า + ใหม่ / 2
+        //fx0y0
+        //fx1y1
+        y = y + ((funcalXY(currentXStart, y, expression) + funcalXY(currentXStart + h, y0, expression)) / 2) * h
+        fxReal = funcal(currentXStart + h, expressionReal);
+        console.log(currentXStart);
         console.log(y);
-        check = Math.abs(y - realy);
+        check = Math.abs(y - fxReal);
 
-        arrayX2.push(currentx + h);
-        arrayX.push(currentx + h);
+        arrayX2.push(currentXStart + h);
+        arrayX.push(currentXStart + h);
         arrayY.push(y);
-        arrayRY.push(realy);
+        arrayRY.push(fxReal);
 
         // Create an empty <tr> element and add it to the 1st position of the table:
         var row = table.insertRow(n);
@@ -139,21 +143,21 @@ const Heun = () => {
         cell4.setAttribute("id", "cell");
         cell5.setAttribute("id", "cell");
 
-        cell1.innerHTML = currentx;
+        cell1.innerHTML = currentXStart;
         cell2.innerHTML = y;
         cell3.innerHTML = y0;
-        cell4.innerHTML = realy;
+        cell4.innerHTML = fxReal;
         cell5.innerHTML = check;
 
 
-        currentx = currentx + h;
+        currentXStart = currentXStart + h;
 
 
     }
     draw(arrayX, arrayY, arrayRY, arrayX2);
 }
 /*const test2 = () => {
-		var expression = document.getElementById("text1").value;
+		var expression = document.getElementById("inputEqual").value;
 		console.log(test(2,3,expression));
 
 	}
@@ -187,10 +191,10 @@ const cleantable = () => {
 }
 
 //การวาดที่จะไปใส่ใน plot
-const draw = (x, y, realy, x2) => {
+const draw = (x, y, fxReal, x2) => {
     try {
         /*// compile the expression once
-        const expression = document.getElementById('text1').value
+        const expression = document.getElementById('inputEqual').value
         const expr = math.compile(expression)
 
         // evaluate the expression repeatedly for different values of x
@@ -212,7 +216,7 @@ const draw = (x, y, realy, x2) => {
         }*/
         const data = [{
             x: x2,
-            y: realy,
+            y: fxReal,
             name: 'Real'
         }, {
             x: x,

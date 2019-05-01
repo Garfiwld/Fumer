@@ -1,3 +1,5 @@
+<h1>Spline Interpolation</h1>
+
 <body onload="draw(); CreateTable(text1.value);">
     <div class="content">
         <div class="container-fluid">

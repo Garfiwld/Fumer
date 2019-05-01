@@ -1,6 +1,6 @@
 <h1>LU Decomposition Method</h1>
 
-<body onload="CreateTable(text1.value);">
+<body onload="CreateTable(text1.value);getdata();">
     <div class="content">
         <div class="container-fluid">
 
@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(text1.value)">ENTER</button>
+                        onclick="CreateTable(text1.value);getdata();">ENTER</button>
                 </div>
             </div>
             <br>
@@ -97,12 +97,12 @@ const getdata = () => {
             }
         }
     }
-    a = [
-        [2, 3, 4],
-        [4, 10, 9],
-        [6, 17, 20]
-    ];
-    b = [23, 59, 101]
+    // a = [
+    //     [2, 3, 4],
+    //     [4, 10, 9],
+    //     [6, 17, 20]
+    // ];
+    // b = [23, 59, 101]
     LU_Decomposition(a, b);
 }
 
@@ -198,6 +198,7 @@ const CreateTable = (n) => {
                 x.setAttribute("type", "text");
                 x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
                 x.setAttribute("class", "form-control");
+                x.setAttribute("value", math.randomInt(100));
                 cell.appendChild(x);
             }
         }

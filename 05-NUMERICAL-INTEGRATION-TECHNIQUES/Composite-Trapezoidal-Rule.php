@@ -23,7 +23,7 @@
                                 <input type="text" class="form-control" id="inputXEnd" placeholder="1" value="5">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputN">INPUT N SPLIT</label>
+                                <label for="inputN">INPUT f(xn) SPLIT</label>
                                 <input type="text" class="form-control" id="inputN" placeholder="4" value="10">
                             </div>
                         </div>

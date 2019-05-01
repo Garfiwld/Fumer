@@ -1,4 +1,4 @@
-<body onload="CreateTable(inputN.value);">
+<body onload="CreateTable(inputN.value);getdata();">
     <h1>Gauss Elimination</h1>
     <div class="content">
         <div class="container-fluid">
@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(inputN.value)">ENTER</button>
+                        onclick="CreateTable(inputN.value);getdata();">ENTER</button>
                 </div>
             </div>
 
@@ -64,11 +64,11 @@ const getdata = () => {
             arr[i].push(document.getElementById(i + "|" + j).value);
         }
     }
-    arr = [
-        [2, 1, -3, -1],
-        [-1, 3, 2, 12],
-        [3, 1, -3, 0]
-    ];
+    // arr = [
+    //     [2, 1, -3, -1],
+    //     [-1, 3, 2, 12],
+    //     [3, 1, -3, 0]
+    // ];
     Gauss_Elimination(arr);
 }
 
@@ -108,7 +108,7 @@ const Gauss_Elimination = (arr) => {
     // แทนค่าย้อนกลับ
     var result = [];
     for (i = n - 1; i >= 0; i--) {
-        // เอา 12 02 01 ไป ลบ y เคสหา x3 ไม่เข้า
+        // เอา 12 02 01 ไป ลบ y
         for (j = n - 1; j > i; j--) {
             console.log("[" + i + n + "] = " + arr[i][n] + " - " + "[" + i + j + "] = " + arr[i][j]);
             arr[i][n] = arr[i][n] - arr[i][j];
@@ -116,7 +116,6 @@ const Gauss_Elimination = (arr) => {
         }
         // หาค่า x3 x2 x1
         if (isFinite(arr[i][n] / arr[i][i])) {
-            //
             result.push(arr[i][n] / arr[i][i]);
         } else {
             result.push(0);
@@ -183,6 +182,7 @@ const CreateTable = (n) => {
                 x.setAttribute("type", "text");
                 x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
                 x.setAttribute("class", "form-control");
+                x.setAttribute("value", math.randomInt(100));
                 cell.appendChild(x);
             }
         }

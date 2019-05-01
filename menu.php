@@ -55,12 +55,12 @@
                     <li>
                         <a href="index.php?page=Gauss-Seidel-Method">Gauss-Seidel Method</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="index.php?page=Conjugate-Gradient-Method">Conjugate Gradient Method</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
-            <li>
+            <!-- <li>
                 <a href="#interSubmenu" data-toggle="collapse" aria-expanded="false"
                     class="dropdown-toggle">INTERPOLATION AND EXTRAPOLATION</a>
                 <ul class="collapse list-unstyled" id="interSubmenu">
@@ -85,7 +85,7 @@
                     <li>
                         <a href="index.php?page=Multiple-Regression">Multiple Regression</a>
                     </li>
-                </ul>
+                </ul> -->
             <li>
                 <a href="#nuinterSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">NUMERICAL
                     INTEGRATION TECHNIQUES</a>
@@ -94,6 +94,9 @@
                         <a href="index.php?page=Trapezoidal-Rule">Trapezoidal Rule</a>
                     </li> -->
                     <li>
+                        <a href="index.php?page=Newton-Cotes-Integration-Formulas">Newton-Cotes Integration Formulas</a>
+                    </li>
+                    <li>
                         <a href="index.php?page=Composite-Trapezoidal-Rule">Composite Trapezoidal Rule</a>
                     </li>
                     <!-- <li>
@@ -101,9 +104,6 @@
                     </li> -->
                     <li>
                         <a href="index.php?page=Composite-Simpsons-Rule">Composite Simpson's Rule</a>
-                    </li>
-                    <li>
-                        <a href="index.php?page=Newton-Cotes-Integration-Formulas">Newton-Cotes Integration Formulas</a>
                     </li>
                     <!-- <li>
                         <a href="index.php?page=Romberg-Integration">Romberg Integration</a>
@@ -126,7 +126,7 @@
                     <li>
                         <a href="index.php?page=Central">Central</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="index.php?page=More-Acc-First-Forward">More Acc First Forward</a>
                     </li>
                     <li>
@@ -134,7 +134,7 @@
                     </li>
                     <li>
                         <a href="index.php?page=More-Acc-Central">More Acc Central</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
 
@@ -164,7 +164,6 @@
                         <a href="index.php?page=Multistep-method">Multistep method</a>
                     </li> -->
                 </ul>
-                <!-- <a href="index.php?page=codeTest">Test</a> -->
             </li>
         </ul>
 

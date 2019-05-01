@@ -1,4 +1,4 @@
-<body onload="Secant(); draw();">
+<body onload="Secant();">
     <h1>Secant Method</h1>
     <div class="content">
         <div class="container-fluid">
@@ -29,8 +29,7 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-lg btn-block"
-                        onclick="Secant(); draw(); ">ENTER</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="Secant();">ENTER</button>
                 </div>
             </div>
             <br>
@@ -108,6 +107,7 @@ const Secant = () => {
         x1 = xNew;
 
     } while (check > 0.00001 && n < 100)
+    afDraw(xNew)
 }
 
 
@@ -130,33 +130,51 @@ const cleantable = () => {
     }
 }
 
-//การวาดที่จะไปใส่ใน plot
-const draw = () => {
-    try {
-        // compile the expression once
-        const expression = document.getElementById('inputEqual').value
-        const expr = math.compile(expression)
+const afDraw = (xm) => {
 
-        // evaluate the expression repeatedly for different values of x
-        const xValues = math.range(-10, 10, 0.5).toArray()
-        const yValues = xValues.map(function(x) {
-            return expr.eval({
-                x: x
-            })
+    // compile the expression once
+    const expression = document.getElementById('inputEqual').value
+
+    const expr = math.compile(expression)
+
+    // evaluate the expression repeatedly for different values of x
+    const xValues = math.range(-10, 10, 0.5).toArray()
+    const yValues = xValues.map(function(x) {
+        return expr.eval({
+            x: x
         })
+    })
+    draw(xValues, yValues, xm);
+}
+
+const draw = (xValues, yValues, xm) => {
+    try {
+        console.log(xValues + " " + yValues + " " + xm);
+
 
         // render the plot using plotly
-        const trace1 = {
+        const fx = {
             x: xValues,
             y: yValues,
+            name: 'F(x)',
             type: 'scatter'
-        }
-        const data = [trace1]
-        Plotly.newPlot('plot', data, {
-            margin: {
-                t: 0
+        };
+        var trace2 = {
+            x: [xm],
+            y: [0],
+            mode: 'markers',
+            type: 'scatter',
+            name: 'ROOT',
+            text: ['XM'],
+            marker: {
+                size: 12
             }
-        })
+        };
+        const data = [fx, trace2]
+        Plotly.newPlot('plot', data, {
+            responsive: true
+        });
+
     } catch (err) {
         console.error(err)
         alert(err)

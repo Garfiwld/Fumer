@@ -9,21 +9,21 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="text1">input Equal</label>
-                                <input type="text" class="form-control" id="text1" placeholder="x^3-x-2"
-                                    value="x^3-x-2">
+                                <label for="inputEqual">input Equal</label>
+                                <input type="text" class="form-control" id="inputEqual" placeholder="e^(2*x)"
+                                    value="e^(2*x)">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text2">input X</label>
-                                <input type="text" class="form-control" id="text2" placeholder="1" value="1">
+                                <label for="inputX">input X</label>
+                                <input type="text" class="form-control" id="inputX" placeholder="2" value="2">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text3">input H</label>
-                                <input type="text" class="form-control" id="text3" placeholder="5" value="5">
+                                <label for="inputH">input H</label>
+                                <input type="text" class="form-control" id="inputH" placeholder="0.25" value="0.25">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="text4">input oder Differential</label>
-                                <input type="text" class="form-control" id="text4" placeholder="5" value="5">
+                                <label for="inputDiff">input oder Differential</label>
+                                <input type="text" class="form-control" id="inputDiff" placeholder="2" value="2">
                             </div>
                         </div>
                     </form>
@@ -43,10 +43,12 @@
             <div class="card">
                 <div class="card-header">
                     <h1 class="h2" style="margin-top:10px">output</h1>
-                    <table id="output" style="padding: 0px 8px;" class="table table-hover">
-                        <tr style="text-align: center;">
-                            <th width="20%">result</th>
-                        </tr>
+                    <table id="output" style="padding: 0px 8px;" class="table table-bordered">
+                        <thead>
+                            <th>result</th>
+                            <th>real</th>
+                            <th>error</th>
+                        </thead>
                     </table>
                 </div>
             </div>
@@ -58,10 +60,10 @@
 <script>
 const First_Forward = () => {
     var table = document.getElementById("output");
-    var expression = document.getElementById("text1").value;
-    var x = document.getElementById("text2").value;
-    var h = document.getElementById("text3").value;
-    var n = document.getElementById("text4").value;
+    var expression = document.getElementById("inputEqual").value;
+    var x = document.getElementById("inputX").value;
+    var h = document.getElementById("inputH").value;
+    var n = document.getElementById("inputDiff").value;
     n = parseInt(n);
     h = parseFloat(h);
     x = parseFloat(x);
@@ -95,6 +97,8 @@ const First_Forward = () => {
     cell3.innerHTML = error;
 
 }
+
+
 
 //สร้าง Pascal's Triangle
 const pascalsTriangle = (num) => {
@@ -151,7 +155,7 @@ const cleantable = () => {
 const draw = () => {
     try {
         // compile the expression once
-        const expression = document.getElementById('text1').value
+        const expression = document.getElementById('inputEqual').value
         const expr = math.compile(expression)
 
         // evaluate the expression repeatedly for different values of x
