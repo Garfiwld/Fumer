@@ -91,7 +91,7 @@ const bisection = () => {
     do {
 
         if (xl != xr) {
-            xm = (xl * funcal(xr) - xr * funcal(xl)) / (funcal(xr) - funcal(xl));
+            xm = (parseFloat(xl) + parseFloat(xr)) / 2;
             check = Math.abs(xm - xmOld).toFixed(8);
         } else {
             check = 0;

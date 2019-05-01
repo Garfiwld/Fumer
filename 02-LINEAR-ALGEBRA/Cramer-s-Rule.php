@@ -69,11 +69,12 @@ const getdata = () => {
             arr[i].push(document.getElementById(i + "|" + j).value);
         }
     }
-    arr = [
-        [1, 1, 7, 9],
-        [2, 7, -7, -17],
-        [3, 6, -5, 0]
-    ];
+    // arr = [
+    //     [1, 1, 7, 9],
+    //     [2, 7, -7, -17],
+    //     [3, 6, -5, 0]
+    // ];
+    // console.log(arr);
     cramerRule(arr);
 }
 
@@ -81,6 +82,7 @@ const cramerRule = (arr) => {
     var n = document.getElementById("inputN").value;
     var det = math.resize(arr, [parseInt(n), parseInt(n)]);
     var detCal = math.det(det)
+    //แยก y
     var y = math.flatten(math.column(arr, parseInt(n)));
     var detNCal = [];
     for (var i = 0; i < n; i++) {

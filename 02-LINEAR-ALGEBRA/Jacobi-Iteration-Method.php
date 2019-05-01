@@ -1,18 +1,18 @@
 <h1>Jacobi Iteration Method</h1>
 
-<body onload="CreateTable(text1.value);">
+<body onload="CreateTable(inputN.value);">
     <div class="content">
         <div class="container-fluid">
 
             <div class="card">
                 <div class="card-body">
                     <h5>input 'n' Create table input</h5>
-                    <input type="text" class="form-control" id="text1" placeholder="3" name="text" placeholder="x^3-x-2"
-                        value="3" required>
+                    <input type="text" class="form-control" id="inputN" placeholder="3" name="text"
+                        placeholder="x^3-x-2" value="3" required>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(text1.value)">ENTER</button>
+                        onclick="CreateTable(inputN.value)">ENTER</button>
                 </div>
             </div>
             <br>
@@ -36,12 +36,6 @@
                                 <th scope="col">resultX</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="list-data">
-                                <td id="X"></td>
-                                <td id="resultX"></td>
-                            </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>
@@ -61,7 +55,7 @@
 
 <script>
 const getdata = () => {
-    n = document.getElementById("text1").value;
+    n = document.getElementById("inputN").value;
     var arr = [];
     for (i = 0; i < n; i++) {
         arr.push([]);
@@ -85,7 +79,20 @@ const getdata = () => {
             }
         }
     }
-    //call
+    // a = [
+    //     [4, -4, 0],
+    //     [-1, 4, -2],
+    //     [0, 2, 4]
+    // ];
+    // b = [400, 400, 400]
+    // x[100, 100, 100]
+    a = [
+        [27, 6, -1],
+        [6, 15, 2],
+        [1, 1, 54]
+    ];
+    b = [54, 72, 110]
+    x[0, 0, 0]
     Jacobi_Ireration(a, b, x);
 }
 
@@ -98,19 +105,19 @@ const Jacobi_Ireration = (a, b, x) => {
         cleantable();
     }
 
-    var xold = [];
-    var temp = [];
+    var xOld = [];
+    var tempX = [];
     var check = [];
-    var checkT;
+    var checkErr;
     var Iteration = 1;
     for (i = 0; i < n; i++) {
-        temp.push(0.0);
+        tempX.push(0.0);
         check.push(0.0);
-        xold.push(0.0);
+        xOld.push(0.0);
     }
-
+    // สร้างหัวตาราง
     var row = table2.insertRow(0);
-    for (i = 0; i < parseInt(n) * 2 + 1; i++) {
+    for (i = 0; i < (parseInt(n) * 2 + 1); i++) {
         if (i == 0) {
             var cell = row.insertCell(i);
             cell.setAttribute("id", "cell");
@@ -127,28 +134,52 @@ const Jacobi_Ireration = (a, b, x) => {
     }
 
     do {
-        checkT = false;
+        checkErr = false;
+        // a = [
+        //     [27, 6, -1],
+        //     [6, 15, 2],
+        //     [1, 1, 54]
+        // ];
+        // b = [54, 72, 110]
+        // x[0, 0, 0]
         for (i = 0; i < n; i++) {
-            temp[i] = b[i];
+            // x = b
+            tempX[i] = b[i];
             for (j = 0; j < n; j++) {
                 if (i != j) {
-                    temp[i] = temp[i] - a[i][j] * x[j];
+                    // เอา F มาหา x = b - a * x
+                    // F = [
+                    //     [0, x, x],
+                    //     [x, 0, x],
+                    //     [x, x, 0]
+                    // ]
+                    tempX[i] = tempX[i] - a[i][j] * x[j];
                 }
             }
-            temp[i] = temp[i] / a[i][i];
+            // x / E
+            // E = [
+            //     [x, 0, 0],
+            //     [0, x, 0],
+            //     [0, 0, x]
+            // ]
+            console.log(tempX[i] + " / " + a[i][i]);
+            tempX[i] = tempX[i] / a[i][i];
+            console.log("= " + tempX[i]);
         }
-        xold = x.slice();
-        x = temp.slice();
+        xOld = x.slice();
+        console.log("x " + x.slice());
+        x = tempX.slice();
+        console.log("x " + tempX.slice());
 
         for (i = 0; i < n; i++) {
-            check[i] = Math.abs((x[i] - xold[i]) / x[i]);
+            check[i] = Math.abs((x[i] - xOld[i]) / x[i]);
             if (check[i] > 0.00001) {
-                checkT = true;
+                checkErr = true;
             }
         }
-        if (Iteration == 1) {
-            checkT = true;
-        }
+        // if (Iteration == 1) {
+        //     checkErr = true;
+        // }
 
         row = table2.insertRow(Iteration);
         for (i = 0; i < parseInt(n) * 2 + 1; i++) {
@@ -168,14 +199,14 @@ const Jacobi_Ireration = (a, b, x) => {
         }
         Iteration++;
 
-    } while (checkT && Iteration < 100)
+    } while (checkErr && Iteration < 100)
 
     var num = 1;
     for (i = 0; i < n; i++) {
         var row = table.insertRow(num);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
-        cell1.innerHTML = "X|" + num + ":    ";
+        cell1.innerHTML = num;
         cell2.innerHTML = x[i];
         num++;
     }
@@ -197,6 +228,7 @@ const CreateTable = (n) => {
     var table = document.getElementById("InputTable");
     if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
         cleantableinput();
+        cleantable();
     }
 
     var row = table.insertRow(0);

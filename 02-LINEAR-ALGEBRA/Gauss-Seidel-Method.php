@@ -85,7 +85,29 @@ const getdata = () => {
             }
         }
     }
-    //call
+
+    // a = [
+    //     [4, -4, 0],
+    //     [-1, 4, -2],
+    //     [0, 2, 4]
+    // ];
+    // b = [400, 400, 400]
+    // x[100, 100, 100]
+    // a = [
+    //     [27, 6, -1],
+    //     [6, 15, 2],
+    //     [1, 1, 54]
+    // ];
+    // b = [54, 72, 110]
+    // x[0, 0, 0]
+    a = [
+        [10, 1, 2, 0],
+        [-1, 11, -1, 3],
+        [2, -1, 10, -1],
+        [0, 3, -1, 8]
+    ];
+    b = [6, 25, -11, 15];
+    x = [0, 0, 0, 0];
     Gauss_Seidel_Iteration(a, b, x);
 }
 
@@ -98,17 +120,17 @@ const Gauss_Seidel_Iteration = (a, b, x) => {
         cleantable();
     }
 
-    var xold = [];
+    var xOld = [];
     var check = [];
-    var checkT;
+    var checkErr;
     var Iteration = 1;
     for (i = 0; i < n; i++) {
         check.push(0.0);
-        xold.push(0.0);
+        xOld.push(0.0);
     }
 
     var row = table2.insertRow(0);
-    for (i = 0; i < parseInt(n) * 2 + 1; i++) {
+    for (i = 0; i < (parseInt(n) * 2 + 1); i++) {
         if (i == 0) {
             var cell = row.insertCell(i);
             cell.setAttribute("id", "cell");
@@ -125,31 +147,33 @@ const Gauss_Seidel_Iteration = (a, b, x) => {
     }
 
     do {
-        checkT = false;
+        checkErr = false;
         //คำนวน
         for (i = 0; i < n; i++) {
             x[i] = b[i];
-            for (j = 0; j < n; j++) {
-                if (i != j) {
-                    x[i] = x[i] - a[i][j] * x[j];
-                }
+            for (j = 1; j < i - 1; j++) {
+                x[i] = x[i] - a[i][j] * x[j];
+            }
+            for (k = i + 1; k < n; k++) {
+                x[i] = x[i] - a[i][k] * xOld[k];
             }
             x[i] = x[i] / a[i][i];
         }
-        //ตรวจค่าทีละตัว
+        // หา
         for (i = 0; i < n; i++) {
-            console.log(x[i] - xold[i]);
-            check[i] = Math.abs((x[i] - xold[i]) / x[i]);
+            console.log(x[i] - xOld[i]);
+            check[i] = Math.abs((x[i] - xOld[i]) / x[i]);
             if (check[i] > 0.00001) {
-                checkT = true;
+                checkErr = true;
             }
         }
 
-        xold = x.slice();
+        xOld = x.slice();
+
         //รอบแรก
-        if (Iteration == 1) {
-            checkT = true;
-        }
+        // if (Iteration == 1) {
+        //     checkErr = true;
+        // }
         //เพิ่มตราง
         row = table2.insertRow(Iteration);
         for (i = 0; i < parseInt(n) * 2 + 1; i++) {
@@ -169,14 +193,14 @@ const Gauss_Seidel_Iteration = (a, b, x) => {
         }
         Iteration++;
 
-    } while (checkT && Iteration < 100)
+    } while (checkErr && Iteration < 100)
     //ตรางคำตอบ
     var num = 1;
     for (i = 0; i < n; i++) {
         var row = table.insertRow(num);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
-        cell1.innerHTML = "X|" + num + ":    ";
+        cell1.innerHTML = num;
         cell2.innerHTML = x[i];
         num++;
     }

@@ -123,12 +123,19 @@ const getdata = () => {
             }
         }
     }
+    // a = [
+    //     [4, -4, 0],
+    //     [-1, 4, -2],
+    //     [0, -2, 4]
+    // ];
+    // b = [400, 400, 400]
+
     a = [
-        [4, -4, 0],
-        [-1, 4, -2],
-        [0, -2, 4]
+        [2, 3, 4],
+        [4, 10, 9],
+        [6, 17, 20]
     ];
-    b = [400, 400, 400]
+    b = [23, 59, 101]
     Cholesky_Decomposition(a, b);
 }
 
@@ -154,7 +161,7 @@ const Cholesky_Decomposition = (a, b) => {
         var row = table.insertRow(num);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
-        cell1.innerHTML = "X|" + num + ":    ";
+        cell1.innerHTML = num;
         cell2.innerHTML = result['_data'][i];
         num++;
     }

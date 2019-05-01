@@ -92,6 +92,7 @@ const methodFalse = () => {
 
         console.log(n);
 
+        // หา error
         if (n > 0) {
             var errPer = Math.abs(((xm - xmOld) / xm) * 100).toFixed(8)
             console.log(errPer);

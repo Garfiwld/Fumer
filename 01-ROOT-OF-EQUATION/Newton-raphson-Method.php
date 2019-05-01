@@ -63,7 +63,8 @@ const NewRaphson = () => {
     //math.derivative('x^2', 'x')
     var table = document.getElementById("output");
     var expression = document.getElementById("inputEqual").value;
-    var expression2 = math.derivative(expression, 'x');
+    var expressionDiff = math.derivative(expression, 'x');
+    console.log(expressionDiff.toString());
     var x = 0;
     var xOld = document.getElementById("inputX").value;
     var n = 0;
@@ -73,7 +74,7 @@ const NewRaphson = () => {
     }
     do {
 
-        x = xOld - (funcal(xOld, expression) / funcal(xOld, expression2.toString()));
+        x = xOld - (funcal(xOld, expression) / funcal(xOld, expressionDiff.toString()));
         check = Math.abs(x - xOld).toFixed(8);
         if (n > 0) {
             var errPer = Math.abs(((x - xOld) / x) * 100).toFixed(8)

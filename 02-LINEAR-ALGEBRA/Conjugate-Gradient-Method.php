@@ -21,8 +21,7 @@
                     <table id="InputTable"></table>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-lg btn-block"
-                        onclick="Conjugate_Gradient()">ENTER</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="getdata()">ENTER</button>
                 </div>
             </div>
             <br>
@@ -58,53 +57,9 @@
 </body>
 
 <script>
-// สร้างตาราง Input
-const createTable = (n) => {
-    var table = document.getElementById("InputTable");
-    //ล้างตาราง Input
-    if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
-        cleantableinput();
-    }
-
-    var row = table.insertRow(0);
-    for (i = 0; i <= parseInt(n) + 2; i++) {
-        if (i == 0) {
-            var cell = row.insertCell(i);
-            cell.innerHTML = "";
-        } else {
-            if (i == parseInt(n) + 1) {
-                var cell = row.insertCell(i);
-                cell.innerHTML = "Y";
-            } else if (i == parseInt(n) + 2) {
-                var cell = row.insertCell(i);
-                cell.innerHTML = "initial X";
-            } else {
-                var cell = row.insertCell(i);
-                cell.innerHTML = "X" + parseInt(i - 1);
-            }
-        }
-    }
-    for (i = 1; i <= n; i++) {
-        var row = table.insertRow(i);
-        for (j = 0; j <= parseInt(n) + 2; j++) {
-            if (j == 0) {
-                var cell = row.insertCell(j);
-                cell.innerHTML = "a" + parseInt(i);
-            } else {
-                var cell = row.insertCell(j);
-                var x = document.createElement("INPUT");
-                x.setAttribute("type", "text");
-                x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
-                x.setAttribute("class", "form-control");
-                cell.appendChild(x);
-            }
-        }
-    }
-}
-
 // รับค่าจาก inputTable
 const getdata = () => {
-    n = document.getElementById("text1").value;
+    n = document.getElementById("inputN").value;
     var arr = [];
     for (i = 0; i < n; i++) {
         arr.push([]);
@@ -127,6 +82,13 @@ const getdata = () => {
             }
         }
     }
+    a = [
+        [4, -4, 0],
+        [-1, 4, -2],
+        [0, 2, 4]
+    ];
+    b = [400, -950, 200]
+    x = [100, 100, 100]
     Conjugate_Gradient(a, b, x);
 }
 
@@ -144,7 +106,7 @@ const Conjugate_Gradient = (a, b, x) => {
 
     var ramda;
     var alpha;
-    var check = parseFloat(0.000000);
+    var check = 0.0;
     var row = table2.insertRow(0);
     for (i = 0; i <= parseInt(n) + 1; i++) {
         if (i == 0) {
@@ -223,6 +185,51 @@ const cleantable = () => {
 const cleantableinput = () => {
     var table = document.getElementById("InputTable");
     table.innerHTML = "";
+}
+
+
+// สร้างตาราง Input
+const createTable = (n) => {
+    var table = document.getElementById("InputTable");
+    //ล้างตาราง Input
+    if (document.getElementById("InputTable").getElementsByTagName("tr").length > 0) {
+        cleantableinput();
+    }
+
+    var row = table.insertRow(0);
+    for (i = 0; i <= parseInt(n) + 2; i++) {
+        if (i == 0) {
+            var cell = row.insertCell(i);
+            cell.innerHTML = "";
+        } else {
+            if (i == parseInt(n) + 1) {
+                var cell = row.insertCell(i);
+                cell.innerHTML = "Y";
+            } else if (i == parseInt(n) + 2) {
+                var cell = row.insertCell(i);
+                cell.innerHTML = "initial X";
+            } else {
+                var cell = row.insertCell(i);
+                cell.innerHTML = "X" + parseInt(i - 1);
+            }
+        }
+    }
+    for (i = 1; i <= n; i++) {
+        var row = table.insertRow(i);
+        for (j = 0; j <= parseInt(n) + 2; j++) {
+            if (j == 0) {
+                var cell = row.insertCell(j);
+                cell.innerHTML = "a" + parseInt(i);
+            } else {
+                var cell = row.insertCell(j);
+                var x = document.createElement("INPUT");
+                x.setAttribute("type", "text");
+                x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
+                x.setAttribute("class", "form-control");
+                cell.appendChild(x);
+            }
+        }
+    }
 }
 </script>
 
