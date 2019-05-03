@@ -1,6 +1,6 @@
 <h1>Jacobi Iteration Method</h1>
 
-<body onload="CreateTable(inputN.value);">
+<body onload="CreateTable(inputN.value);getdata();">
     <div class="content">
         <div class="container-fluid">
 
@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-blockbtn btn-primary btn-lg btn-block"
-                        onclick="CreateTable(inputN.value)">ENTER</button>
+                        onclick="CreateTable(inputN.value);getdata();">ENTER</button>
                 </div>
             </div>
             <br>
@@ -261,6 +261,7 @@ const CreateTable = (n) => {
                 x.setAttribute("type", "text");
                 x.setAttribute("id", (parseInt(i - 1) + "|" + parseInt(j - 1)));
                 x.setAttribute("class", "form-control");
+                x.setAttribute("value", math.randomInt(100));
                 cell.appendChild(x);
             }
         }

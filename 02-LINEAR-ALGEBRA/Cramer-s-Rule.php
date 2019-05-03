@@ -32,7 +32,7 @@
                     <button type="button" class="btn btn-primary btn-lg btn-block" onclick="getdata()">ENTER</button>
                 </div>
             </div>
-
+            <br>
             <div class="card">
                 <div class="card-body">
                     <table id="output" class="table table-bordered">

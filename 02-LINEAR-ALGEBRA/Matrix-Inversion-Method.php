@@ -105,6 +105,7 @@ const Matrix_Inversion = (a) => {
         cleantable();
     }
 
+    // หา Matrix Inversion
     var matrixInv = math.inv(a);
 
 

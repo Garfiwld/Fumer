@@ -78,17 +78,20 @@ const methodFalse = () => {
     var xmOld = xr;
     var xm = 0;
     var n = 0;
+    var errPer = 50;
     var check = parseFloat(0.000000);
     if (document.getElementById("outputTable").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
     do {
-        if (xl != xr) {
-            xm = (xl * funcal(xr) - xr * funcal(xl)) / (funcal(xr) - funcal(xl))
-            check = Math.abs(xm - xmOld).toFixed(8);
-        } else {
-            check = 0;
-        }
+        // if (xl != xr) {
+        var fxR = funcal(xr).toFixed(8);
+        var fxL = funcal(xl).toFixed(8);
+        xm = (xl * fxR - xr * fxL / (fxR - fxL)).toFixed(8)
+        //     check = Math.abs(xm - xmOld).toFixed(8);
+        // } else {
+        //     check = 0;
+        // }
 
         console.log(n);
 
@@ -127,7 +130,7 @@ const methodFalse = () => {
             xr = xm
         }
         xmOld = xm
-    } while (check > 0.00001 && n < 100)
+    } while (errPer > 0.0000001)
     afDraw(xm);
 }
 

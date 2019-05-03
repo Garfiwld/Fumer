@@ -1,6 +1,6 @@
 <h1>First Forward</h1>
 
-<body onload="First_Forward(); draw();">
+<body onload="First_Forward();">
     <div class="content">
         <div class="container-fluid">
 
@@ -30,7 +30,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary btn-lg btn-block"
-                        onclick="First_Forward(); draw(); ">ENTER</button>
+                        onclick="First_Forward();">ENTER</button>
                 </div>
             </div>
             <br>
@@ -71,20 +71,28 @@ const First_Forward = () => {
     var result = 0;
     var error = 0;
     var realdiff = 0;
-
+    var resultY = [];
     if (document.getElementById("output").getElementsByTagName("tr").length > 0) {
         cleantable();
     }
-
     for (i = 0; i < n + 1; i++) {
-        console.log(result);
+        // console.log(result);
+        //                  -,+,-               4,6,4           x-i*h (เพื่มทีละ h)
         result = result + math.pow(-1, i) * pascals[n][i] * funcal(x + (n - 1 - i) * h, expression);
+        if (i > 0) {
+            resultTemp = result;
+            resultTemp = resultTemp / math.pow(h, n);
+            resultY[i] = resultTemp;
+            resultY[i - 2] = result + math.pow(-1, i) * pascals[n][i] * funcal(x + (n - 1 - i) * h, expression);
+        }
     }
+    console.log(resultY);
+
     result = result / math.pow(h, n);
-
+    resultY.push(result);
     realdiff = difffuncal(x, n, expression);
-    error = Math.abs(result - realdiff);
-
+    // error = Math.abs(result - realdiff);
+    // for (i = 0; i < n; i++) {
     var row = table.insertRow(1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -94,9 +102,50 @@ const First_Forward = () => {
     cell2.setAttribute("id", "cell");
     cell1.innerHTML = result;
     cell2.innerHTML = realdiff;
-    cell3.innerHTML = error;
-
+    cell3.innerHTML = Math.abs(result - realdiff);
+    // }
+    afterDraw();
 }
+const afterDraw = () => {
+    var n = parseFloat(document.getElementById("inputX").value);
+    var h = parseFloat(document.getElementById("inputH").value);
+    var sum1 = [],
+        Real1 = []
+    var i = new Array();
+    for (var i = 1; i <= n; i++) {
+        sum1[i - 1] = (f(i + h) - f(i)) / h;
+        Real1[i - 1] = funcDiff1(i);
+    }
+    draw(sum1, Real1);
+    // console.log(sum1);
+    // console.log(Real1);
+}
+
+function f(X) {
+    var expression = document.getElementById("inputEqual").value;
+    expr = math.compile(expression);
+    let scope = {
+        x: parseFloat(X),
+        y: parseFloat(X),
+        z: parseFloat(X)
+    };
+    var sum = expr.eval(scope);
+    return sum;
+}
+
+
+function funcDiff1(X, Y) {
+    var test = math.derivative(document.getElementById("inputEqual").value, 'x');
+    //console.log(test.toString());
+    expr = math.compile(test.toString());
+    let scope = {
+        x: parseFloat(X),
+        y: parseFloat(Y)
+    };
+    var sum = expr.eval(scope);
+    return sum;
+}
+
 
 
 
@@ -152,27 +201,20 @@ const cleantable = () => {
 }
 
 //การวาดที่จะไปใส่ใน plot
-const draw = () => {
+const draw = (sum1, Real1) => {
     try {
-        // compile the expression once
-        const expression = document.getElementById('inputEqual').value
-        const expr = math.compile(expression)
-
-        // evaluate the expression repeatedly for different values of x
-        const xValues = math.range(-10, 10, 0.5).toArray()
-        const yValues = xValues.map(function(x) {
-            return expr.eval({
-                x: x
-            })
-        })
-
-        // render the plot using plotly
-        const trace1 = {
-            x: xValues,
-            y: yValues,
+        const Fxdiff1 = {
+            x: math.range(-10, 10, 0.5).toArray(),
+            y: sum1,
             type: 'scatter'
         }
-        const data = [trace1]
+
+        const RealFx1 = {
+            x: math.range(-10, 10, 0.5).toArray(),
+            y: Real1,
+            type: 'scatter'
+        }
+        const data = [Fxdiff1, RealFx1]
         Plotly.newPlot('plot', data, {
             margin: {
                 t: 0

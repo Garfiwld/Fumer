@@ -31,7 +31,8 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputRealEqual">input Real Equal</label>
-                                <input type="text" class="form-control" id="inputRealEqual" placeholder="x^2" value="x^2">
+                                <input type="text" class="form-control" id="inputRealEqual" placeholder="x^2"
+                                    value="x^2">
                             </div>
                         </div>
                     </form>
@@ -95,13 +96,13 @@ const Euler = () => {
     var arrayX = [],
         arrayY = [],
         arrayRY = [],
-        arrayX2 = [];
+        arrayXR = [];
 
     arrayX.push(currentX);
     arrayY.push(y);
 
     fxReal = funcal(currentX, expressionReal);
-    arrayX2.push(currentX);
+    arrayXR.push(currentX);
     arrayRY.push(fxReal);
 
     while (currentX <= xEnd) {
@@ -111,7 +112,7 @@ const Euler = () => {
         fxReal = funcal(currentX + h, expressionReal);
 
         check = Math.abs(y - fxReal);
-        arrayX2.push(currentX + h);
+        arrayXR.push(currentX + h);
         arrayX.push(currentX + h);
         arrayY.push(y);
         arrayRY.push(fxReal);
@@ -141,7 +142,7 @@ const Euler = () => {
 
 
     }
-    draw(arrayX, arrayY, arrayRY, arrayX2);
+    dRraw(arrayX, arrayY, arrayRY, arrayX);
 }
 
 //แก้ x และ y

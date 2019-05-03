@@ -81,14 +81,16 @@ const Central = () => {
     } else {
         for (i = 0; i < n + 1; i++) {
             if (i < n / 2) {
-                ;
+                //                  -,+,-               4,6,4           xi+2,xi+1
                 result = result + math.pow(-1, i) * pascals[n - 1][i] * funcal(x + ((n + 1) / 2 - i) * h,
                     expression);
             } else {
+                //                  -,+,-               4,6,4           x-i*h (เพื่มทีละ h)
                 result = result + math.pow(-1, i) * pascals[n - 1][n - i] * funcal(x + ((n + 1) / 2 - i - 1) * h,
                     expression);
             }
         }
+        // 2h,h^2,2h^3,h^4
         result = result / (math.pow(h, n) * 2);
     }
 

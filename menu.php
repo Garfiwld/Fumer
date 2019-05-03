@@ -55,9 +55,9 @@
                     <li>
                         <a href="index.php?page=Gauss-Seidel-Method">Gauss-Seidel Method</a>
                     </li>
-                    <!-- <li>
+                    <li>
                         <a href="index.php?page=Conjugate-Gradient-Method">Conjugate Gradient Method</a>
-                    </li> -->
+                    </li>
                 </ul>
             </li>
             <!-- <li>
@@ -128,11 +128,11 @@
                     </li>
                     <!-- <li>
                         <a href="index.php?page=More-Acc-First-Forward">More Acc First Forward</a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a href="index.php?page=More-Acc-Backward">More Acc Backward</a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a href="index.php?page=More-Acc-Central">More Acc Central</a>
                     </li> -->
                 </ul>

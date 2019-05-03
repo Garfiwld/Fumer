@@ -78,6 +78,7 @@ const Backward = () => {
 
     for (i = 0; i < n + 1; i++) {
         console.log(result);
+        //                  -,+,-               4,6,4           x-i*h (เพื่มทีละ h)
         result = result + math.pow(-1, i) * pascals[n][i] * funcal(x - i * h, expression);
     }
     result = result / math.pow(h, n);
