@@ -210,10 +210,10 @@
                 </div> -->
             </div>
         </nav>
-        <?php 
-            error_reporting(0);
-            switch ($_GET["page"]) {
-            //01-ROOT-OF-EQUATION
+        <?php
+        error_reporting(0);
+        switch ($_GET["page"]) {
+                //01-ROOT-OF-EQUATION
             case "Bisection-Method":
                 include("01-ROOT-OF-EQUATION\Bisection-Method.php");
                 break;
@@ -229,7 +229,7 @@
             case "One-point-iteration-Method":
                 include("01-ROOT-OF-EQUATION\One-point-iteration-Method.php");
                 break;
-            //02-LINEAR-ALGEBRA
+                //02-LINEAR-ALGEBRA
             case "Cramer-s-Rule":
                 include("02-LINEAR-ALGEBRA\Cramer-s-Rule.php");
                 break;
@@ -257,7 +257,7 @@
             case "Conjugate-Gradient-Method":
                 include("02-LINEAR-ALGEBRA\Conjugate-Gradient-Method.php");
                 break;
-            //03-INTERPOLATION-AND-EXTRAPOLATION
+                //03-INTERPOLATION-AND-EXTRAPOLATION
             case "Newton-Interpolation":
                 include("03-INTERPOLATION-AND-EXTRAPOLATION\Newton-Interpolation.php");
                 break;
@@ -267,38 +267,38 @@
             case "Spline-Interpolation":
                 include("03-INTERPOLATION-AND-EXTRAPOLATION\Spline-Interpolation.php");
                 break;
-            //04-LEAST-SQUARES-REGRESSION
+                //04-LEAST-SQUARES-REGRESSION
             case "Regression":
                 include("04-LEAST-SQUARES-REGRESSION\Regression.php");
                 break;
             case "Multiple-Regression":
                 include("04-LEAST-SQUARES-REGRESSION\Multiple-Regression.php");
                 break;
-            
-            //05-NUMERICAL-INTEGRATION-TECHNIQUES
-            // case "Trapezoidal-Rule":
-            //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Trapezoidal-Rule.php");
-            //     break;
+
+                //05-NUMERICAL-INTEGRATION-TECHNIQUES
+                // case "Trapezoidal-Rule":
+                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Trapezoidal-Rule.php");
+                //     break;
             case "Composite-Trapezoidal-Rule":
                 include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Composite-Trapezoidal-Rule.php");
                 break;
-            // case "Simpson-s-Rule":
-            //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Simpson-s-Rule.php");
-            //     break;
+                // case "Simpson-s-Rule":
+                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Simpson-s-Rule.php");
+                //     break;
             case "Composite-Simpsons-Rule":
                 include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Composite-Simpsons-Rule.php");
                 break;
             case "Newton-Cotes-Integration-Formulas":
                 include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Newton-Cotes-Integration-Formulas.php");
                 break;
-            // case "Romberg-Integration":
-            //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Romberg-Integration.php");
-            //     break;
-            // case "Gauss-Quadrature":
-            //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Gauss-Quadrature.php");
-            //     break;
-            
-            //06-NUMERICAL-DIFFERENTIATION
+                // case "Romberg-Integration":
+                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Romberg-Integration.php");
+                //     break;
+                // case "Gauss-Quadrature":
+                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Gauss-Quadrature.php");
+                //     break;
+
+                //06-NUMERICAL-DIFFERENTIATION
             case "First-Forward":
                 include("06-NUMERICAL-DIFFERENTIATION\First-Forward.php");
                 break;
@@ -318,7 +318,7 @@
                 include("06-NUMERICAL-DIFFERENTIATION\More-Acc-Central.php");
                 break;
 
-            //07-ORDINARY-DIFFERENTIAL-EQUATIONS
+                //07-ORDINARY-DIFFERENTIAL-EQUATIONS
             case "Euler-s-method":
                 include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Euler-s-method.php");
                 break;
@@ -328,25 +328,25 @@
             case "Modified-Euler-s-method":
                 include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Modified-Euler-s-method.php");
                 break;
-            // case "Runge-Kutta-method":
-            //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Runge-Kutta-method.php");
-            //     break;
-            // case "System-of-first-order-differential-equations":
-            //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\System-of-first-order-differential-equations.php");
-            //     break;
-            // case "Multistep-method":
-            //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Multistep-method.php");
-            //     break;
-            // case "codeTest":
-            //     include("codeTest.php");
-            //     break;
-            // case "":
-            //     include("XXX\.php");
-            //     break;
+                // case "Runge-Kutta-method":
+                //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Runge-Kutta-method.php");
+                //     break;
+                // case "System-of-first-order-differential-equations":
+                //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\System-of-first-order-differential-equations.php");
+                //     break;
+                // case "Multistep-method":
+                //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Multistep-method.php");
+                //     break;
+                // case "codeTest":
+                //     include("codeTest.php");
+                //     break;
+                // case "":
+                //     include("XXX\.php");
+                //     break;
 
             default:
                 include("01-ROOT-OF-EQUATION\Bisection-Method.php");
-            }
+        }
         ?>
 
     </div>

@@ -95,11 +95,11 @@
                 check = 0;
             }
 
-            console.log(n);
+            // console.log(n);
 
             if (n > 0) {
                 var errPer = Math.abs(((xm - xmOld) / xm) * 100).toFixed(8)
-                console.log(errPer);
+                // console.log(errPer);
             }
 
             n++;
@@ -114,15 +114,19 @@
             var cell5 = row.insertCell(4);
 
             // Add some text to the new cells:
-
+            console.log(n)
             cell1.innerHTML = n;
             cell1.setAttribute("id", "cell");
+            console.log(xl)
             cell2.innerHTML = xl;
             cell2.setAttribute("id", "cell");
+            console.log(xr)
             cell3.innerHTML = xr;
             cell3.setAttribute("id", "cell");
+            console.log(xm)
             cell4.innerHTML = xm;
             cell4.setAttribute("id", "cell");
+            console.log(errPer)
             cell5.innerHTML = errPer;
             cell5.setAttribute("id", "cell");
 
@@ -174,7 +178,7 @@
 
     const draw = (xValues, yValues, xm) => {
         try {
-            console.log(xValues + " " + yValues + " " + xm);
+            // console.log(xValues + " " + yValues + " " + xm);
 
 
             // render the plot using plotly

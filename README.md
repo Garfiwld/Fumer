@@ -1,8 +1,10 @@
+docker run -dit --name Fumer -p 80:80 -v D:\VM\Docker\Fumer\:/var/www/html/ php:7.4.3-apache
+
 ###Function compile
 Parse and compile an expression. Returns a an object with a function eval([scope]) to evaluate the compiled expression.
 
 Syntax
-math.compile(expr)                       // returns one node
+math.compile(expr) // returns one node
 math.compile([expr1, expr2, expr3, ...]) // returns an array with nodes
 
 Examples
@@ -11,25 +13,25 @@ code1.eval() // 5
 https://mathjs.org/docs/reference/functions/compile.html
 
 ###Function lup
-Calculate the Matrix LU decomposition with partial pivoting. Matrix A is decomposed in two matrices (L, U) and a row permutation vector p where A[p,:] = L * U
+Calculate the Matrix LU decomposition with partial pivoting. Matrix A is decomposed in two matrices (L, U) and a row permutation vector p where A[p,:] = L \* U
 
 Syntax
 math.lup(A)
 https://mathjs.org/docs/reference/functions/lup.html
 
 ###Function multiply
-Multiply two or more values, x * y. For matrices, the matrix product is calculated.
+Multiply two or more values, x \* y. For matrices, the matrix product is calculated.
 
 Syntax
 math.multiply(x, y)
 https://mathjs.org/docs/reference/functions/multiply.html
 
 ###Function lusolve
-Solves the linear system A * x = b where A is an [n x n] matrix and b is a [n] column vector.
+Solves the linear system A \* x = b where A is an [n x n] matrix and b is a [n] column vector.
 
 Syntax
-math.lusolve(A, b)     // returns column vector with the solution to the linear system A * x = b
-math.lusolve(lup, b)   // returns column vector with the solution to the linear system A * x = b, lup = math.lup(A)
+math.lusolve(A, b) // returns column vector with the solution to the linear system A _ x = b
+math.lusolve(lup, b) // returns column vector with the solution to the linear system A _ x = b, lup = math.lup(A)
 https://mathjs.org/docs/reference/functions/lusolve.html
 
 ###Function transpose
