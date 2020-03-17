@@ -73,6 +73,9 @@
 
     const bisection = () => {
 
+        console.log(document.getElementById('inputEqual').value)
+        console.log(document.getElementById('inputXL').value)
+        console.log(document.getElementById('inputXR').value)
         var xl = document.getElementById("inputXL").value;
         var xr = document.getElementById("inputXR").value;
         var table = document.getElementById("outputTable");

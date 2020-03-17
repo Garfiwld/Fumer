@@ -215,137 +215,137 @@
         switch ($_GET["page"]) {
                 //01-ROOT-OF-EQUATION
             case "Bisection-Method":
-                include("01-ROOT-OF-EQUATION\Bisection-Method.php");
+                include("01-ROOT-OF-EQUATION/Bisection-Method.php");
                 break;
             case "Newton-raphson-Method":
-                include("01-ROOT-OF-EQUATION\Newton-raphson-Method.php");
+                include("01-ROOT-OF-EQUATION/Newton-raphson-Method.php");
                 break;
             case "Secant-Method":
-                include("01-ROOT-OF-EQUATION\Secant-Method.php");
+                include("01-ROOT-OF-EQUATION/Secant-Method.php");
                 break;
             case "False-position-Method":
-                include("01-ROOT-OF-EQUATION\False-position-Method.php");
+                include("01-ROOT-OF-EQUATION/False-position-Method.php");
                 break;
             case "One-point-iteration-Method":
-                include("01-ROOT-OF-EQUATION\One-point-iteration-Method.php");
+                include("01-ROOT-OF-EQUATION/One-point-iteration-Method.php");
                 break;
                 //02-LINEAR-ALGEBRA
             case "Cramer-s-Rule":
-                include("02-LINEAR-ALGEBRA\Cramer-s-Rule.php");
+                include("02-LINEAR-ALGEBRA/Cramer-s-Rule.php");
                 break;
             case "Gauss-Elimination-Method":
-                include("02-LINEAR-ALGEBRA\Gauss-Elimination-Method.php");
+                include("02-LINEAR-ALGEBRA/Gauss-Elimination-Method.php");
                 break;
             case "Gauss-Jordan-Method":
-                include("02-LINEAR-ALGEBRA\Gauss-Jordan-Method.php");
+                include("02-LINEAR-ALGEBRA/Gauss-Jordan-Method.php");
                 break;
             case "Matrix-Inversion-Method":
-                include("02-LINEAR-ALGEBRA\Matrix-Inversion-Method.php");
+                include("02-LINEAR-ALGEBRA/Matrix-Inversion-Method.php");
                 break;
             case "LU-Decomposition-Method":
-                include("02-LINEAR-ALGEBRA\LU-Decomposition-Method.php");
+                include("02-LINEAR-ALGEBRA/LU-Decomposition-Method.php");
                 break;
             case "Cholesky-Decomposition-Method":
-                include("02-LINEAR-ALGEBRA\Cholesky-Decomposition-Method.php");
+                include("02-LINEAR-ALGEBRA/Cholesky-Decomposition-Method.php");
                 break;
             case "Jacobi-Iteration-Method":
-                include("02-LINEAR-ALGEBRA\Jacobi-Iteration-Method.php");
+                include("02-LINEAR-ALGEBRA/Jacobi-Iteration-Method.php");
                 break;
             case "Gauss-Seidel-Method":
-                include("02-LINEAR-ALGEBRA\Gauss-Seidel-Method.php");
+                include("02-LINEAR-ALGEBRA/Gauss-Seidel-Method.php");
                 break;
             case "Conjugate-Gradient-Method":
-                include("02-LINEAR-ALGEBRA\Conjugate-Gradient-Method.php");
+                include("02-LINEAR-ALGEBRA/Conjugate-Gradient-Method.php");
                 break;
                 //03-INTERPOLATION-AND-EXTRAPOLATION
             case "Newton-Interpolation":
-                include("03-INTERPOLATION-AND-EXTRAPOLATION\Newton-Interpolation.php");
+                include("03-INTERPOLATION-AND-EXTRAPOLATION/Newton-Interpolation.php");
                 break;
             case "Lagrange-Interpolation":
-                include("03-INTERPOLATION-AND-EXTRAPOLATION\Lagrange-Interpolation.php");
+                include("03-INTERPOLATION-AND-EXTRAPOLATION/Lagrange-Interpolation.php");
                 break;
             case "Spline-Interpolation":
-                include("03-INTERPOLATION-AND-EXTRAPOLATION\Spline-Interpolation.php");
+                include("03-INTERPOLATION-AND-EXTRAPOLATION/Spline-Interpolation.php");
                 break;
                 //04-LEAST-SQUARES-REGRESSION
             case "Regression":
-                include("04-LEAST-SQUARES-REGRESSION\Regression.php");
+                include("04-LEAST-SQUARES-REGRESSION/Regression.php");
                 break;
             case "Multiple-Regression":
-                include("04-LEAST-SQUARES-REGRESSION\Multiple-Regression.php");
+                include("04-LEAST-SQUARES-REGRESSION/Multiple-Regression.php");
                 break;
 
                 //05-NUMERICAL-INTEGRATION-TECHNIQUES
                 // case "Trapezoidal-Rule":
-                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Trapezoidal-Rule.php");
+                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES/Trapezoidal-Rule.php");
                 //     break;
             case "Composite-Trapezoidal-Rule":
-                include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Composite-Trapezoidal-Rule.php");
+                include("05-NUMERICAL-INTEGRATION-TECHNIQUES/Composite-Trapezoidal-Rule.php");
                 break;
                 // case "Simpson-s-Rule":
-                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Simpson-s-Rule.php");
+                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES/Simpson-s-Rule.php");
                 //     break;
             case "Composite-Simpsons-Rule":
-                include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Composite-Simpsons-Rule.php");
+                include("05-NUMERICAL-INTEGRATION-TECHNIQUES/Composite-Simpsons-Rule.php");
                 break;
             case "Newton-Cotes-Integration-Formulas":
-                include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Newton-Cotes-Integration-Formulas.php");
+                include("05-NUMERICAL-INTEGRATION-TECHNIQUES/Newton-Cotes-Integration-Formulas.php");
                 break;
                 // case "Romberg-Integration":
-                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Romberg-Integration.php");
+                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES/Romberg-Integration.php");
                 //     break;
                 // case "Gauss-Quadrature":
-                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES\Gauss-Quadrature.php");
+                //     include("05-NUMERICAL-INTEGRATION-TECHNIQUES/Gauss-Quadrature.php");
                 //     break;
 
                 //06-NUMERICAL-DIFFERENTIATION
             case "First-Forward":
-                include("06-NUMERICAL-DIFFERENTIATION\First-Forward.php");
+                include("06-NUMERICAL-DIFFERENTIATION/First-Forward.php");
                 break;
             case "Backward":
-                include("06-NUMERICAL-DIFFERENTIATION\Backward.php");
+                include("06-NUMERICAL-DIFFERENTIATION/Backward.php");
                 break;
             case "Central":
-                include("06-NUMERICAL-DIFFERENTIATION\Central.php");
+                include("06-NUMERICAL-DIFFERENTIATION/Central.php");
                 break;
             case "More-Acc-First-Forward":
-                include("06-NUMERICAL-DIFFERENTIATION\More-Acc-First-Forward.php");
+                include("06-NUMERICAL-DIFFERENTIATION/More-Acc-First-Forward.php");
                 break;
             case "More-Acc-Backward":
-                include("06-NUMERICAL-DIFFERENTIATION\More-Acc-Backward.php");
+                include("06-NUMERICAL-DIFFERENTIATION/More-Acc-Backward.php");
                 break;
             case "More-Acc-Central":
-                include("06-NUMERICAL-DIFFERENTIATION\More-Acc-Central.php");
+                include("06-NUMERICAL-DIFFERENTIATION/More-Acc-Central.php");
                 break;
 
                 //07-ORDINARY-DIFFERENTIAL-EQUATIONS
             case "Euler-s-method":
-                include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Euler-s-method.php");
+                include("07-ORDINARY-DIFFERENTIAL-EQUATIONS/Euler-s-method.php");
                 break;
             case "Heun-s-method":
-                include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Heun-s-method.php");
+                include("07-ORDINARY-DIFFERENTIAL-EQUATIONS/Heun-s-method.php");
                 break;
             case "Modified-Euler-s-method":
-                include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Modified-Euler-s-method.php");
+                include("07-ORDINARY-DIFFERENTIAL-EQUATIONS/Modified-Euler-s-method.php");
                 break;
                 // case "Runge-Kutta-method":
-                //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Runge-Kutta-method.php");
+                //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS/Runge-Kutta-method.php");
                 //     break;
                 // case "System-of-first-order-differential-equations":
-                //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\System-of-first-order-differential-equations.php");
+                //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS/System-of-first-order-differential-equations.php");
                 //     break;
                 // case "Multistep-method":
-                //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS\Multistep-method.php");
+                //     include("07-ORDINARY-DIFFERENTIAL-EQUATIONS/Multistep-method.php");
                 //     break;
                 // case "codeTest":
                 //     include("codeTest.php");
                 //     break;
                 // case "":
-                //     include("XXX\.php");
+                //     include("XXX/.php");
                 //     break;
 
             default:
-                include("01-ROOT-OF-EQUATION\Bisection-Method.php");
+                include("01-ROOT-OF-EQUATION/Bisection-Method.php");
         }
         ?>
 

@@ -1,4 +1,8 @@
-docker run -dit --name Fumer -p 80:80 -v D:\VM\Docker\Fumer\:/var/www/html/ php:7.4.3-apache
+#Fumer
+
+```Docker
+docker run -dit --name Fumer -p 80:80 -v "${pwd}:/var/www/html/" php:7.4.3-apache
+```
 
 ###Function compile
 Parse and compile an expression. Returns a an object with a function eval([scope]) to evaluate the compiled expression.
